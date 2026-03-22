@@ -12,6 +12,7 @@
   --card-bg:   #ffffff;
   --tag-bg:    #ebf4ff;
   --tag-fg:    #2b6cb0;
+  --sidebar-w: 260px;
   --font:      "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
@@ -20,66 +21,33 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* ── Top bar ──────────────────────────────────────────────────── */
 .topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   background: var(--bar-bg);
-  color: var(--bar-fg);
-  padding: 0.6rem 2rem;
   position: sticky;
   top: 0;
   z-index: 100;
-  gap: 1rem;
+  border-bottom: 1px solid #1a202c;
 }
 
-.topbar-profile {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-shrink: 0;
-}
-
-.avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--accent);
-}
-
-.topbar-identity {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.3;
-}
-
-.name {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
-}
-
-.tagline, .affiliation {
-  font-size: 0.75rem;
-  color: #a0aec0;
-}
-
-/* ── Top nav ──────────────────────────────────────────────────── */
 .topnav {
   display: flex;
   align-items: center;
   gap: 0.1rem;
+  padding: 0 1rem;
+  height: 44px;
 }
 
 .topnav a {
   color: var(--bar-fg);
   text-decoration: none;
   font-size: 0.875rem;
-  padding: 0.35rem 0.75rem;
+  padding: 0.3rem 0.75rem;
   border-radius: 4px;
   transition: background 0.15s;
   white-space: nowrap;
@@ -87,17 +55,86 @@ body {
 
 .topnav a:hover { background: #4a5568; color: #fff; }
 
-.nav-github {
+/* ── Page wrap (sidebar + content side-by-side) ───────────────── */
+.page-wrap {
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+}
+
+/* ── Sidebar ──────────────────────────────────────────────────── */
+.sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  padding: 2rem 1.25rem 2rem 1.5rem;
+  position: sticky;
+  top: 44px;          /* below sticky topbar */
+  max-height: calc(100vh - 44px);
+  overflow-y: auto;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+  display: block;
+  margin: 0 auto 0.75rem;
+}
+
+.name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.tagline {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.affiliation {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ── Social links in sidebar ──────────────────────────────────── */
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.social-links a {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.5rem;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.82rem;
+  padding: 0.2rem 0;
+  transition: color 0.15s;
 }
+
+.social-links a:hover { color: var(--accent); }
 
 /* ── Main content ─────────────────────────────────────────────── */
 .content {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 3rem 2rem;
+  flex: 1;
+  padding: 2.5rem 2.5rem 3rem;
+  min-width: 0;
 }
 
 .content section {
@@ -114,6 +151,10 @@ body {
 }
 
 .content p { color: var(--muted); margin-bottom: 0.75rem; }
+
+/* ── Publications ─────────────────────────────────────────────── */
+.pub-entry { margin-bottom: 0.75rem; font-size: 0.9rem; }
+.pub-entry p { margin-bottom: 0; }
 
 /* ── Project cards ────────────────────────────────────────────── */
 .project-card {
@@ -133,13 +174,8 @@ body {
   margin-bottom: 0.4rem;
 }
 
-.project-card h3 a {
-  color: var(--text);
-  text-decoration: none;
-}
-
+.project-card h3 a { color: var(--text); text-decoration: none; }
 .project-card h3 a:hover { color: var(--accent); }
-
 .project-card p { font-size: 0.875rem; margin-bottom: 0.6rem; }
 
 .tag {
@@ -153,7 +189,7 @@ body {
   font-weight: 500;
 }
 
-/* ── Post entries ─────────────────────────────────────────────── */
+/* ── Post / talk entries ──────────────────────────────────────── */
 .post-entry {
   display: flex;
   gap: 1rem;
@@ -162,15 +198,30 @@ body {
   font-size: 0.9rem;
 }
 
-.post-date { color: var(--muted); min-width: 90px; }
+.post-date { color: var(--muted); min-width: 90px; flex-shrink: 0; }
 .post-entry a { color: var(--text); text-decoration: none; }
 .post-entry a:hover { color: var(--accent); }
 
 .placeholder-note { font-style: italic; font-size: 0.85rem; }
 
 /* ── Responsive ───────────────────────────────────────────────── */
-@media (max-width: 680px) {
-  .topbar { flex-direction: column; align-items: flex-start; padding: 0.75rem 1rem; }
-  .topnav { flex-wrap: wrap; gap: 0.1rem; }
+@media (max-width: 700px) {
+  .page-wrap { flex-direction: column; }
+  .sidebar {
+    width: 100%;
+    position: static;
+    max-height: none;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+  }
+  .avatar { width: 80px; height: 80px; margin: 0; }
+  .name, .tagline, .affiliation { text-align: left; }
+  .social-links { flex-direction: row; flex-wrap: wrap; border-top: none; margin-top: 0; padding-top: 0; }
+  .topnav { height: auto; padding: 0.5rem; flex-wrap: wrap; }
   .content { padding: 1.5rem; }
 }
