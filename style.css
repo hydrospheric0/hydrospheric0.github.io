@@ -169,12 +169,10 @@ body {
 
 .position-date {
   display: block;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   color: var(--muted);
   font-weight: 500;
-  margin-bottom: 0.2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+  margin-bottom: 0.15rem;
 }
 
 .position-title {
@@ -199,14 +197,12 @@ body {
 
 /* ── Subsection headings & experience list ────────────────────── */
 .subsection-title {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  color: var(--text);
-  margin: 1.25rem 0 0.6rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  font-size: 0.8rem;
   color: var(--muted);
+  margin: 1.5rem 0 0.5rem;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 .experience-list {
