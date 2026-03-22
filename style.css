@@ -38,6 +38,7 @@ body {
 .topnav {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 0.1rem;
   padding: 0 1rem;
   height: 44px;
@@ -51,9 +52,11 @@ body {
   border-radius: 4px;
   transition: background 0.15s;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .topnav a:hover { background: #4a5568; color: #fff; }
+.topnav a.active { background: var(--accent); color: #fff; }
 
 /* ── Page wrap (sidebar + content side-by-side) ───────────────── */
 .page-wrap {
@@ -129,6 +132,10 @@ body {
 }
 
 .social-links a:hover { color: var(--accent); }
+
+/* ── Tab panels ───────────────────────────────────────────────── */
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
 
 /* ── Main content ─────────────────────────────────────────────── */
 .content {

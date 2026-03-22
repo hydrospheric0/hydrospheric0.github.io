@@ -11,11 +11,11 @@
   <!-- ── Top navigation bar ───────────────────────────────────── -->
   <header class="topbar">
     <nav class="topnav">
-      <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#projects">Projects</a>
-      <a href="#talks">Talks</a>
-      <a href="#posts">Posts</a>
+      <a href="#" class="tab-link active" data-tab="research">Research</a>
+      <a href="#" class="tab-link" data-tab="publications">Publications</a>
+      <a href="#" class="tab-link" data-tab="projects">Projects</a>
+      <a href="#" class="tab-link" data-tab="talks">Talks</a>
+      <a href="#" class="tab-link" data-tab="posts">Posts</a>
     </nav>
   </header>
 
@@ -64,7 +64,7 @@
 
     <main class="content">
 
-      <section id="research">
+      <section id="research" class="tab-panel active">
         <h2>Research</h2>
         <p>
           I am an Earth Scientist who develops spatial tools using Remote Sensing and GIS in an attempt to help
@@ -120,7 +120,7 @@
         </ul>
       </section>
 
-      <section id="publications">
+      <section id="publications" class="tab-panel">
         <h2>Publications</h2>
 
         <h3 class="subsection-title">Peer-reviewed articles</h3>
@@ -156,7 +156,7 @@
         <p class="placeholder-note" style="margin-top:0.75rem;"><!-- Add further publications here --></p>
       </section>
 
-      <section id="projects">
+      <section id="projects" class="tab-panel">
         <h2>Projects</h2>
 
         <div class="project-card">
@@ -193,7 +193,7 @@
 
       </section>
 
-      <section id="talks">
+      <section id="talks" class="tab-panel">
         <h2>Talks</h2>
         <p class="placeholder-note"><!-- Add recorded talks or presentations here --></p>
         <!-- Example:
@@ -204,7 +204,7 @@
         -->
       </section>
 
-      <section id="posts">
+      <section id="posts" class="tab-panel">
         <h2>Posts</h2>
         <p class="placeholder-note"><!-- Link to blog posts or write-ups here --></p>
         <!-- Example:
@@ -217,6 +217,21 @@
 
     </main>
   </div><!-- /.page-wrap -->
+
+  <script>
+    const links = document.querySelectorAll('.tab-link');
+    const panels = document.querySelectorAll('.tab-panel');
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = link.dataset.tab;
+        links.forEach(l => l.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        link.classList.add('active');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+  </script>
 
 </body>
 </html>
