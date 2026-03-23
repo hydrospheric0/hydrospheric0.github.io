@@ -40,20 +40,12 @@ body {
 .topnav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 0.1rem;
   padding: 0 1rem;
   height: 44px;
   max-width: 70%;
   margin: 0 auto;
-}
-
-.topnav-logo {
-  font-size: 1.4rem;
-  line-height: 1;
-  margin-right: auto;
-  padding: 0 0.5rem;
-  user-select: none;
 }
 
 .topnav a {
