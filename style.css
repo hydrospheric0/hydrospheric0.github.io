@@ -415,6 +415,11 @@ body {
 
 .post-article a:hover { text-decoration: underline; }
 
+.post-article a.tag { color: var(--tag-fg); text-decoration: none; }
+.post-article a.tag:hover { text-decoration: none; }
+.post-article a.tag-source { color: #fff; }
+.post-article a.tag-source:hover { background: #16a34a; color: #fff; }
+
 .post-figure {
   margin: 1rem 0 0.4rem;
 }
