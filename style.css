@@ -424,6 +424,24 @@ body {
   margin: 1rem 0 0.4rem;
 }
 
+.post-figure--right {
+  float: right;
+  margin: 0 0 1rem 1.5rem;
+  max-width: 240px;
+  width: 38%;
+}
+
+.post-figure--right img {
+  max-width: 100%;
+  width: 100%;
+}
+
+.post-article-clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .post-figure img {
   display: block;
   max-width: 752px;
