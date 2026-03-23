@@ -1,7 +1,7 @@
 /* ── Reset & base ─────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { font-size: 19px; }
+html { font-size: 16px; }
 
 :root {
   --bg:        #fafafa;
@@ -384,14 +384,14 @@ body {
 }
 
 .post-article h3 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text);
   margin-bottom: 0.6rem;
 }
 
 .post-article p {
-  font-size: 0.9rem;
+  font-size: 0.83rem;
   color: var(--muted);
   margin-bottom: 0.75rem;
   line-height: 1.65;
@@ -503,7 +503,7 @@ body {
 }
 
 .post-card-btn {
-  margin-top: 0.75rem;
+  margin-top: 0.35rem;
   align-self: flex-start;
   background: var(--accent);
   color: #fff;
