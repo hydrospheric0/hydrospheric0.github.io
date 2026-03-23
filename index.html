@@ -415,19 +415,35 @@
       <section id="posts" class="tab-panel">
         <h2>Posts</h2>
 
-        <!-- Post index: shown by default -->
-        <div id="post-index" class="post-index">
-          <a href="#" class="post-index-entry" data-post="post-calbirds-atlas">
-            <span class="post-index-date">Mar 22, 2026</span>
-            <span class="post-index-title">Help complete the California Bird Atlas</span>
-          </a>
-          <a href="#" class="post-index-entry" data-post="post-lifer">
-            <span class="post-index-date">Mar 22, 2026</span>
-            <span class="post-index-title">Mapping my &ldquo;Lifer&rdquo; Bird List with lifeR</span>
-          </a>
-        </div>
+        <!-- ── Post cards (default view) ─────────────────────── -->
+        <div class="post-cards" id="post-cards">
 
-        <article class="post-article post-single" id="post-calbirds-atlas">
+          <article class="post-card" id="card-calbirds-atlas" data-post="post-calbirds-atlas">
+            <img src="images/calbirds_app.png" class="post-card-thumb" alt="CA Bird Atlas app" />
+            <div class="post-card-body">
+              <span class="post-article-date">March 22, 2026</span>
+              <h3 class="post-card-title">Help complete the California Bird Atlas</h3>
+              <p class="post-card-excerpt">A small mobile web-app that shows your location relative to the California Breeding Bird Atlas grid and provides block coverage statistics.</p>
+              <button class="post-card-btn">Read &rarr;</button>
+            </div>
+          </article>
+
+          <article class="post-card" id="card-post-lifer" data-post="post-lifer">
+            <img src="images/lifer-thumbnail.jpg" class="post-card-thumb" alt="lifeR map" />
+            <div class="post-card-body">
+              <span class="post-article-date">March 22, 2026</span>
+              <h3 class="post-card-title">Mapping my &ldquo;Lifer&rdquo; Bird List with lifeR</h3>
+              <p class="post-card-excerpt">Using eBird Status &amp; Trends occurrence data to generate animated weekly maps of potential life-list birds across the US.</p>
+              <button class="post-card-btn">Read &rarr;</button>
+            </div>
+          </article>
+
+        </div><!-- /.post-cards -->
+
+        <!-- ── Full post view ────────────────────────────────── -->
+        <div class="post-full" id="post-full" style="display:none">
+
+          <article class="post-article post-single" id="post-calbirds-atlas">
           <h3>Help complete the California Bird Atlas</h3>
           <div class="post-article-meta">
             <span class="post-article-date">Published: March 22, 2026</span>
@@ -442,8 +458,8 @@
           <p>
             In January 2026 an exciting new 5-year project has started: the <strong><a href="https://www.californiabirdatlas.org/" target="_blank" rel="noopener noreferrer">California Breeding Bird Atlas (CA BBA)</a></strong>.
             This massive effort, supported by a custom version of <strong><a href="https://ebird.org/atlascalifornia/home" target="_blank" rel="noopener noreferrer">eBird</a></strong>,
-            aims to produce the first statewide <strong>Breeding Bird Atlas</strong>.
-            This project will provide critical information and tools for future bird conservation and monitoring.
+            aims to produce the first statewide <strong>Breeding Bird Atlas</strong>.<br>
+            Breeding Bird Atlases provide critical information and tools for future bird conservation and monitoring.
             Progress and other information about the project can be found
             <a href="https://ebird.org/atlascalifornia/explore?atlasPeriod=EBIRD_ATL_CA_2026&amp;m=" target="_blank" rel="noopener noreferrer">HERE</a>.
           </p>
@@ -482,11 +498,7 @@
               </svg>
             </a>
           </div>
-          <nav class="post-nav">
-            <span></span>
-            <a href="#" class="post-nav-link post-nav-all" data-post="post-index">&uarr; All posts</a>
-            <a href="#" class="post-nav-link post-nav-older" data-post="post-lifer">Older: Mapping my &ldquo;Lifer&rdquo; Bird List with lifeR &rarr;</a>
-          </nav>
+          <button class="post-back-btn">&larr; All posts</button>
         </article>
 
         <article class="post-article post-single" id="post-lifer">
@@ -547,12 +559,16 @@
               </svg>
             </a>
           </div>
-          <nav class="post-nav">
-            <a href="#" class="post-nav-link post-nav-newer" data-post="post-calbirds-atlas">&larr; Newer: Help complete the California Bird Atlas</a>
-            <a href="#" class="post-nav-link post-nav-all" data-post="post-index">&uarr; All posts</a>
-            <span></span>
-          </nav>
+          <button class="post-back-btn">&larr; All posts</button>
         </article>
+
+        </div><!-- /.post-full -->
+
+        <!-- ── Other posts strip (shown below active post) ─────── -->
+        <div class="post-other" id="post-other" style="display:none">
+          <h4 class="post-other-heading">Other posts</h4>
+          <div class="post-cards post-cards--compact" id="post-other-cards"></div>
+        </div>
 
       </section>
 
@@ -573,37 +589,74 @@
       });
     });
 
-    // Post display helpers
-    function showPostIndex() {
-      document.getElementById('post-index').style.display = '';
-      document.querySelectorAll('.post-single').forEach(p => p.style.display = 'none');
+    // Post card data (thumbnails + excerpts for "Other posts" strip)
+    const POST_META = {
+      'post-calbirds-atlas': {
+        cardId: 'card-calbirds-atlas',
+        thumb: 'images/calbirds_app.png',
+        title: 'Help complete the California Bird Atlas',
+        date: 'March 22, 2026',
+        excerpt: 'A small mobile web-app showing your location relative to the CA BBA grid with block coverage statistics.'
+      },
+      'post-lifer': {
+        cardId: 'card-post-lifer',
+        thumb: 'images/lifer-thumbnail.jpg',
+        title: 'Mapping my \u201cLifer\u201d Bird List with lifeR',
+        date: 'March 22, 2026',
+        excerpt: 'Using eBird Status & Trends occurrence data to generate animated weekly maps of potential life-list birds across the US.'
+      }
+    };
+
+    function showPostCards() {
+      document.getElementById('post-cards').style.display = '';
+      document.getElementById('post-full').style.display = 'none';
+      document.getElementById('post-other').style.display = 'none';
     }
+
     function showPost(id) {
-      document.getElementById('post-index').style.display = 'none';
+      // Show full post pane, hide card grid
+      document.getElementById('post-cards').style.display = 'none';
+      document.getElementById('post-full').style.display = 'block';
+      // Show/hide individual articles
       document.querySelectorAll('.post-single').forEach(p => {
-        p.style.display = (p.id === id) ? '' : 'none';
+        p.style.display = (p.id === id) ? 'block' : 'none';
       });
+      // Build "Other posts" strip
+      const otherCards = document.getElementById('post-other-cards');
+      otherCards.innerHTML = '';
+      Object.entries(POST_META).forEach(([postId, m]) => {
+        if (postId === id) return;
+        const el = document.createElement('article');
+        el.className = 'post-card';
+        el.dataset.post = postId;
+        el.innerHTML = `<img src="${m.thumb}" class="post-card-thumb" alt="" />`
+          + `<div class="post-card-body">`
+          + `<span class="post-article-date">${m.date}</span>`
+          + `<h3 class="post-card-title">${m.title}</h3>`
+          + `<p class="post-card-excerpt">${m.excerpt}</p>`
+          + `<button class="post-card-btn">Read &rarr;</button>`
+          + `</div>`;
+        el.querySelector('.post-card-btn').addEventListener('click', () => showPost(postId));
+        otherCards.appendChild(el);
+      });
+      document.getElementById('post-other').style.display = 'block';
       document.getElementById('posts').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // Posts tab click: always show index
+    // Card click handlers (initial cards) — title and button both open post
+    document.querySelectorAll('.post-card').forEach(card => {
+      card.querySelector('.post-card-btn').addEventListener('click', () => showPost(card.dataset.post));
+      card.querySelector('.post-card-title').addEventListener('click', () => showPost(card.dataset.post));
+    });
+
+    // "All posts" back buttons inside full post view
+    document.querySelectorAll('.post-back-btn').forEach(btn => {
+      btn.addEventListener('click', showPostCards);
+    });
+
+    // Posts tab click: always show cards
     document.querySelector('.tab-link[data-tab="posts"]').addEventListener('click', () => {
-      showPostIndex();
-    });
-
-    // Post index entry clicks
-    document.querySelectorAll('.post-index-entry[data-post]').forEach(a => {
-      a.addEventListener('click', e => { e.preventDefault(); showPost(a.dataset.post); });
-    });
-
-    // Post nav (prev/next/all) clicks
-    document.querySelectorAll('.post-nav-link[data-post]').forEach(a => {
-      a.addEventListener('click', e => {
-        e.preventDefault();
-        const t = a.dataset.post;
-        if (t === 'post-index') showPostIndex();
-        else showPost(t);
-      });
+      showPostCards();
     });
 
     // Tag-post pills and title links (link from project card to Posts tab)
@@ -616,8 +669,11 @@
         document.querySelector('.tab-link[data-tab="' + target + '"]').classList.add('active');
         document.getElementById(target).classList.add('active');
         const postId = pill.dataset.post;
-        if (postId) showPost(postId);
-        else showPostIndex();
+        // Run after panel is visible so scrollIntoView works
+        requestAnimationFrame(() => {
+          if (postId) showPost(postId);
+          else showPostCards();
+        });
       });
     });
 
