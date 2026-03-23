@@ -343,14 +343,6 @@ body {
 }
 .tag-source:hover { background: #16a34a; color: #fff; }
 
-.post-links {
-  margin-top: 1.25rem;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
 /* ── Post / talk entries ──────────────────────────────────────── */
 .post-entry {
   display: flex;
@@ -457,13 +449,71 @@ body {
   font-style: italic;
 }
 
-/* ── Post tags & share ────────────────────────────────────────── */
-.post-tags {
+/* ── Post index & single-post view ───────────────────────────── */
+.post-single { display: none; }
+
+.post-index { margin-top: 0.5rem; }
+
+.post-index-entry {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+}
+.post-index-entry:last-child { border-bottom: none; }
+.post-index-entry:hover .post-index-title { color: var(--accent); }
+
+.post-index-date {
+  font-size: 0.78rem;
+  color: var(--muted);
+  min-width: 90px;
+  flex-shrink: 0;
+}
+
+.post-index-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* ── Post prev/next navigation ───────────────────────────────── */
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  gap: 0.75rem;
+  font-size: 0.83rem;
+}
+
+.post-nav-link {
+  color: var(--accent);
+  text-decoration: none;
+}
+.post-nav-link:hover { text-decoration: underline; }
+.post-nav-all { color: var(--muted); }
+.post-nav-all:hover { color: var(--accent); text-decoration: underline; }
+
+/* ── Post meta bar (links + tags + share on one line) ─────────── */
+.post-meta-bar {
   margin-top: 1.25rem;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.4rem;
+}
+
+.post-meta-sep {
+  display: inline-block;
+  width: 1px;
+  height: 14px;
+  background: var(--border);
+  margin: 0 0.25rem;
+  vertical-align: middle;
 }
 
 .post-tags-label,
@@ -472,13 +522,6 @@ body {
   color: var(--muted);
   font-weight: 600;
   margin-right: 0.1rem;
-}
-
-.post-share {
-  margin-top: 0.75rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }
 
 .share-btn {
