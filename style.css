@@ -351,13 +351,6 @@ body {
   gap: 0.4rem;
 }
 
-.post-link-source {
-  background: #22c55e;
-  color: #fff;
-  text-decoration: none;
-}
-.post-link-source:hover { background: #16a34a; color: #fff; }
-
 /* ── Post / talk entries ──────────────────────────────────────── */
 .post-entry {
   display: flex;
