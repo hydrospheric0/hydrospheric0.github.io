@@ -297,7 +297,7 @@
         </div>
 
         <div class="project-card" data-type="fork">
-          <h3><a href="#" class="tag-post" data-tab="posts">lifeR</a></h3>
+          <h3><a href="#" class="post-tab-link" data-tab="posts">lifeR</a></h3>
           <p>Create animated maps of missing lifer birds using eBird Status &amp; Trends occurrence data. Fork of <a href="https://github.com/smsfrn/lifeR" target="_blank"><strong>lifeR</strong></a> by Samuel Safran.</p>
           <img src="images/lifer-thumbnail.jpg" alt="lifeR map snapshot – July 2023" class="project-thumb" />
           <div class="project-tags">
@@ -496,8 +496,8 @@
       });
     });
 
-    // Tag-post pills (link from project card to Posts tab)
-    document.querySelectorAll('.tag-post[data-tab]').forEach(pill => {
+    // Tag-post pills and title links (link from project card to Posts tab)
+    document.querySelectorAll('.tag-post[data-tab], .post-tab-link[data-tab]').forEach(pill => {
       pill.addEventListener('click', e => {
         e.preventDefault();
         const target = pill.dataset.tab;

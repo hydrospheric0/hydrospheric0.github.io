@@ -325,6 +325,9 @@ body {
   white-space: nowrap;
 }
 
+.post-tab-link { color: var(--text); text-decoration: none; }
+.post-tab-link:hover { color: var(--accent); }
+
 .tag-post {
   background: #aaff00;
   color: #1a4a00;
