@@ -343,6 +343,13 @@ body {
 }
 .tag-source:hover { background: #16a34a; color: #fff; }
 
+.tag-webapp {
+  background: #0d9488;
+  color: #fff;
+  text-decoration: none;
+}
+.tag-webapp:hover { background: #0f766e; color: #fff; }
+
 /* ── Post / talk entries ──────────────────────────────────────── */
 .post-entry {
   display: flex;
