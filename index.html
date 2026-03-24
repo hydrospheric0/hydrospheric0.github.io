@@ -3,24 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bart (A.J.) Wickel</title>
+  <title>Hydro-spatial mapping and more</title>
+  <meta name="description" content="Hydro-spatial mapping and more: remote sensing, GIS, ecohydrology, climate adaptation, wetland science, and bird conservation." />
+  <meta property="og:title" content="Hydro-spatial mapping and more" />
+  <meta property="og:description" content="Hydro-spatial mapping and more: remote sensing, GIS, ecohydrology, climate adaptation, wetland science, and bird conservation." />
+  <meta property="og:url" content="https://hydrospheric0.github.io" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐦</text></svg>" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="data.js"></script>
 </head>
 <body>
-
-  <!-- ── Top navigation bar ───────────────────────────────────── -->
   <header class="topbar">
     <nav class="topnav">
-      <a href="#" class="tab-link active" data-tab="posts">Posts</a>
-      <a href="#" class="tab-link" data-tab="projects">Coding Projects</a>
-      <a href="#" class="tab-link" data-tab="publications">Publications</a>
-      <a href="#" class="tab-link" data-tab="experience">Experience</a>
-      <a href="#" class="tab-link" data-tab="about">About</a>
+      <a href="posts.html" class="nav-link">Posts</a>
+      <a href="coding.html" class="nav-link">Coding</a>
+      <!-- <a href="projects.html" class="nav-link">Projects</a> -->
+      <a href="publications.html" class="nav-link">Publications</a>
+      <a href="index.html" class="nav-link active">About</a>
     </nav>
   </header>
 
-  <!-- ── Page body: sidebar + content ────────────────────────── -->
   <div class="page-wrap">
 
     <aside class="sidebar">
@@ -65,110 +70,204 @@
 
     <main class="content">
 
-      <section id="about" class="tab-panel">
+      <section id="about">
         <h2>About</h2>
-        <p>
-          I am an Earth Scientist who develops spatial tools using Remote Sensing and GIS in an attempt to help
+        <div class="project-card">
+        <p style="margin-bottom:0">
+          I am an Earth Scientist who develops spatial tools using <strong>Remote Sensing and GIS</strong> in an attempt to help
           solve global to local climate, water, and ecosystem crises. Throughout my career I have worked in a
           variety of applied research settings on projects related to conservation, water resource planning and
-          management, ecosystem studies (forests and wetlands), national forest fire monitoring, fossil fuel
-          industry impact studies, renewable energy zone planning, and climate change adaptation. I strongly
-          support the development of open spatial data and tools.
+          management, <strong>ecohydrology</strong> studies (forests and <strong>wetlands</strong>), national forest fire monitoring, fossil fuel
+          industry impact studies, renewable energy zone planning, and <strong>climate</strong> change <strong>adaptation</strong>. I strongly
+          support the development of open spatial data and tools. Most recently I have developed a suite of tools
+          in support of <strong>bird conservation and research</strong>.
         </p>
-      </section>
-
-      <section id="experience" class="tab-panel">
-        <h2>Experience</h2>
-
-        <div class="position-card">
-          <span class="position-date">Oct 2025 &ndash; Present</span>
-          <p class="position-title">Founder &mdash; <a href="https://metoliusresearch.org" target="_blank">Metolius Research</a></p>
-          <p class="position-desc">Not-for-profit research consultancy performing independent research in support of environmental conservation and thriving communities. Davis, CA.</p>
         </div>
 
-        <div class="position-card position-card--logo">
-          <img src="images/logos/ucmerced.png" alt="UC Merced logo" class="position-logo" />
-          <div class="position-card-body">
+        <div class="project-card" style="padding:0;overflow:hidden">
+          <div id="about-map" style="width:100%;height:280px"></div>
+        </div>
+        <script>
+        (function(){
+          var map=L.map('about-map',{scrollWheelZoom:false}).setView([20,0],2);
+          L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
+            attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
+            subdomains:'abcd',maxZoom:19
+          }).addTo(map);
+          var locs=[
+            [52.3676,4.9041,'Amsterdam, Netherlands'],
+            [50.7339,7.0982,'Bonn, Germany'],
+            [-1.4558,-48.5024,'Bel\u00e9m, Brazil'],
+            [41.5534,60.6323,'Urgench, Uzbekistan'],
+            [-16.4897,-68.1193,'La Paz, Bolivia'],
+            [-17.3895,-66.1568,'Cochabamba, Bolivia'],
+            [-17.7833,-63.1821,'Santa Cruz, Bolivia'],
+            [14.9667,-89.7333,'Teculut\u00e1n, Guatemala'],
+            [19.4326,-99.1332,'Mexico City, Mexico'],
+            [38.5449,-121.7405,'Davis, California'],
+            [38.9072,-77.0369,'Washington, DC'],
+            [35.5326,-97.9553,'El Reno, Oklahoma'],
+            [34.7584,-96.6778,'Chickasaw, Oklahoma'],
+            [42.8544,-5.6167,'La Pola de Gord\u00f3n, Spain']
+          ];
+          var locsLight=[
+            [41.3275,19.8187,'Tirana, Albania'],
+            [4.7110,-74.0721,'Bogot\u00e1, Colombia'],
+            [-15.7975,-47.8919,'Bras\u00edlia, Brazil'],
+            [0.3476,32.5825,'Kampala, Uganda'],
+            [-4.4419,15.2663,'Kinshasa, DRC'],
+            [8.5667,-13.2667,'Simandou, Guinea'],
+            [-10.7833,40.4667,'Palma, Mozambique'],
+            [52.0340,113.5000,'Chita, Russia'],
+            [48.4827,135.0836,'Khabarovsk, Russia'],
+            [43.1155,131.8855,'Vladivostok, Russia'],
+            [43.8800,125.3228,'Changchun, China'],
+            [17.9757,102.6331,'Vientiane, Laos'],
+            [-6.2088,106.8456,'Jakarta, Indonesia'],
+            [13.7565,121.0583,'Batangas, Philippines'],
+            [30.5928,114.3055,'Wuhan, China'],
+            [29.2498,-103.2502,'Big Bend, Texas'],
+            [21.8500,-105.4500,'Marismas Nacionales, Mexico'],
+            [18.7667,-95.7667,'Laguna Alvarado, Mexico']
+          ];
+          locs.forEach(function(l){
+            L.circleMarker([l[0],l[1]],{radius:5,color:'#4a9eff',fillColor:'#4a9eff',fillOpacity:0.85,weight:1.5})
+              .bindTooltip(l[2],{direction:'top',offset:[0,-6]})
+              .addTo(map);
+          });
+          locsLight.forEach(function(l){
+            L.circleMarker([l[0],l[1]],{radius:5,color:'#6bcb77',fillColor:'#6bcb77',fillOpacity:0.7,weight:1.5})
+              .bindTooltip(l[2],{direction:'top',offset:[0,-6]})
+              .addTo(map);
+          });
+        })();
+        </script>
+
+        <h3 class="subsection-title">Experience</h3>
+
+
+
+        <div class="project-card position-card">
+          <div class="project-header">
+            <span class="project-summary-name"><a href="https://metoliusresearch.org" target="_blank">Metolius Research</a></span>
+            <span class="position-date">Oct 2025 &ndash; Present</span>
+          </div>
+          <div class="position-detail">
+            <p class="position-desc"><strong>Founder.</strong> Not-for-profit research consultancy performing independent research in support of environmental conservation and thriving communities. Davis, CA.</p>
+          </div>
+        </div>
+
+        <div class="project-card position-card">
+          <div class="project-header">
+            <span class="project-summary-name">University of California, Merced, School of Engineering</span>
             <span class="position-date">Apr 2025 &ndash; Present</span>
-            <p class="position-title">Research Affiliate &mdash; University of California, Merced, School of Engineering</p>
-            <p class="position-desc">Remote affiliation.</p>
+          </div>
+          <div class="position-detail">
+            <a href="https://engineering.ucmerced.edu/" target="_blank" rel="noopener noreferrer"><img src="images/logos/ucmerced.jpg" alt="UC Merced logo" class="position-logo position-logo--ucmerced" /></a>
+            <p class="position-desc"><strong>Remote Research Affiliate.</strong> Guest lectures, student project support.</p>
           </div>
         </div>
 
-        <div class="position-card position-card--logo">
-          <img src="images/logos/yolo-bird-alliance.png" alt="Yolo Bird Alliance logo" class="position-logo" />
-          <div class="position-card-body">
+        <div class="project-card position-card">
+          <div class="project-header">
+            <span class="project-summary-name">Yolo Bird Alliance (formerly Yolo Audubon Society)</span>
             <span class="position-date">Aug 2024 &ndash; Present</span>
-            <p class="position-title">Board Member and Conservation Co-chair &mdash; Yolo Bird Alliance (formerly Yolo Audubon)</p>
+          </div>
+          <div class="position-detail">
+            <a href="https://yolobirdalliance.org/" target="_blank" rel="noopener noreferrer"><img src="images/logos/yolo.jpg" alt="Yolo Bird Alliance logo" class="position-logo" /></a>
+            <p class="position-desc"><strong>Board Member and Conservation Co-chair.</strong> Field trip leader and compiler for the annual Putah Creek Christmas Bird Count.</p>
           </div>
         </div>
 
-        <div class="position-card">
-          <span class="position-date">Oct 2023 &ndash; Present</span>
-          <p class="position-title">Board Member &mdash; California Institute of Environmental Studies (CIES)</p>
+        <div class="project-card position-card">
+          <div class="project-header">
+            <span class="project-summary-name">California Institute of Environmental Studies (CIES)</span>
+            <span class="position-date">Oct 2023 &ndash; Present</span>
+          </div>
+          <div class="position-detail">
+            <a href="https://ciesresearch.org/" target="_blank" rel="noopener noreferrer"><img src="images/logos/cies.svg" alt="California Institute of Environmental Studies logo" class="position-logo position-logo--cies" /></a>
+            <p class="position-desc"><strong>Board Member.</strong></p>
+          </div>
         </div>
 
-        <div class="position-card">
-          <span class="position-date">Oct 2022 &ndash; Feb 2025</span>
-          <p class="position-title">Co-founder / Science and Research Director &mdash; Earth Insight</p>
-          <p class="position-desc">Led a team of spatial analysts in data collection, analysis, mapping, and tool development communicating threats posed by extractive industries to ecosystems and communities. Skills: Python, QGIS, GIS, conservation.</p>
+        <div class="project-card position-card">
+          <div class="project-header">
+            <span class="project-summary-name">Earth Insight</span>
+            <span class="position-date">Oct 2022 &ndash; Feb 2025</span>
+          </div>
+          <div class="position-detail">
+            <a href="https://earthinsight.org/" target="_blank" rel="noopener noreferrer"><img src="images/logos/earthinsight.png" alt="Earth Insight logo" class="position-logo position-logo--earthinsight" /></a>
+            <p class="position-desc"><strong>Co-founder / Science and Research Director.</strong> Led a team of spatial analysts in data collection, analysis, mapping, and tool development communicating threats posed by extractive industries to ecosystems and communities. Skills: Python, QGIS, GIS, conservation.</p>
+          </div>
         </div>
 
-        <div class="position-card position-card--logo">
-          <img src="images/logos/sei.svg" alt="SEI logo" class="position-logo" />
-          <div class="position-card-body">
+        <div class="project-card position-card">
+          <div class="project-header">
+            <span class="project-summary-name">SEI &mdash; Stockholm Environment Institute</span>
             <span class="position-date">Jul 2013 &ndash; Oct 2022</span>
-            <p class="position-title">Senior Scientist &mdash; SEI &mdash; Stockholm Environment Institute</p>
-            <p class="position-desc">Developed spatial analytical tools and innovative approaches for water resource and environmental planning emphasizing natural ecosystems. Davis, CA. Skills: surface water hydrology, QGIS, remote sensing, fire ecology.</p>
+          </div>
+          <div class="position-detail">
+            <a href="https://www.sei.org/" target="_blank" rel="noopener noreferrer"><img src="images/logos/sei.svg" alt="SEI logo" class="position-logo" /></a>
+            <p class="position-desc"><strong>Senior Scientist.</strong> Developed spatial analytical tools and innovative approaches for water resource and environmental planning emphasizing natural ecosystems. Davis, CA. Skills: surface water hydrology, QGIS, remote sensing, fire ecology.</p>
           </div>
         </div>
 
-        <div class="position-card position-card--logo">
-          <img src="images/logos/wwf.svg" alt="WWF logo" class="position-logo" />
-          <div class="position-card-body">
+        <div class="project-card position-card">
+          <div class="project-header">
+            <span class="project-summary-name">World Wildlife Fund</span>
             <span class="position-date">Jan 2007 &ndash; Jul 2013</span>
-            <p class="position-title">Senior Scientist &mdash; Lead Hydrologist &mdash; World Wildlife Fund</p>
-            <p class="position-desc">Freshwater science support to field programs; climate change adaptation approaches and large river basin analyses. Trained 300+ staff of WWF and strategic partners (NGOs, national governments, multilateral agencies). Washington, DC.</p>
+          </div>
+          <div class="position-detail">
+            <a href="https://www.worldwildlife.org/" target="_blank" rel="noopener noreferrer"><img src="images/logos/wwf.svg" alt="WWF logo" class="position-logo" /></a>
+            <p class="position-desc"><strong>Senior Scientist &mdash; Lead Hydrologist.</strong> Freshwater science support to field programs; climate change adaptation approaches and large river basin analyses. Trained 300+ staff of WWF and strategic partners (NGOs, national governments, multilateral agencies). Washington, DC.</p>
           </div>
         </div>
 
-        <div class="position-card position-card--logo">
-          <img src="images/logos/giz.svg" alt="GIZ logo" class="position-logo" />
-          <div class="position-card-body">
+        <div class="project-card position-card">
+          <div class="project-header">
+            <span class="project-summary-name">GIZ / CONABIO</span>
             <span class="position-date">Aug 2004 &ndash; Dec 2006</span>
-            <p class="position-title">CIM Integrated Remote Sensing Expert &mdash; GIZ / CONABIO</p>
-            <p class="position-desc">Development and implementation of Mexico&rsquo;s national satellite-based near-real-time forest fire detection program (MODIS/AVHRR). Capacity building with Mexican and Central American partners. Mexico City.</p>
+          </div>
+          <div class="position-detail">
+            <a href="https://www.giz.de/en/html/index.html" target="_blank" rel="noopener noreferrer"><img src="images/logos/giz.svg" alt="GIZ logo" class="position-logo" /></a>
+            <p class="position-desc"><strong>CIM Integrated Remote Sensing Expert.</strong> Development and implementation of Mexico&rsquo;s national satellite-based near-real-time forest fire detection program (MODIS/AVHRR). Capacity building with Mexican and Central American partners. Mexico City.</p>
           </div>
         </div>
 
-        <div class="position-card position-card--logo">
-          <img src="images/logos/zef.png" alt="ZEF logo" class="position-logo" />
-          <div class="position-card-body">
+        <div class="project-card position-card">
+          <div class="project-header">
+            <span class="project-summary-name">ZEF / Center for Development Research, Univ. Bonn</span>
             <span class="position-date">Jan &ndash; Jul 2004</span>
-            <p class="position-title">Postdoctoral Researcher &mdash; ZEF / Center for Development Research, Univ. Bonn</p>
-            <p class="position-desc">Monitoring study evaluating biodrainage for agricultural drainage in the Khorezm region, Amu-Darya River Basin, Uzbekistan (UNESCO/Urgench).</p>
+          </div>
+          <div class="position-detail">
+            <a href="https://www.zef.de/" target="_blank" rel="noopener noreferrer"><img src="images/logos/zef.png" alt="ZEF logo" class="position-logo position-logo--zef" /></a>
+            <p class="position-desc"><strong>Postdoctoral Researcher.</strong> Monitoring study evaluating biodrainage for agricultural drainage in the Khorezm region, Amu-Darya River Basin, Uzbekistan (UNESCO/Urgench).</p>
           </div>
         </div>
 
-        <div class="position-card position-card--logo">
-          <img src="images/logos/zef.png" alt="ZEF logo" class="position-logo" />
-          <div class="position-card-body">
+        <div class="project-card position-card">
+          <div class="project-header">
+            <span class="project-summary-name">ZEF / Center for Development Research, Univ. Bonn &amp; EMBRAPA Amazonia Oriental</span>
             <span class="position-date">Jan 2000 &ndash; Jun 2004</span>
-            <p class="position-title">PhD Researcher &mdash; ZEF / Center for Development Research, Univ. Bonn &amp; EMBRAPA Amazonia Oriental</p>
-            <p class="position-desc">Two-year hydrological field study of the effects of land-use change and slash-and-burn agriculture on the water and nutrient cycle of smallholder agricultural systems in the eastern Amazon, Brazil.</p>
+          </div>
+          <div class="position-detail">
+            <a href="https://www.zef.de/" target="_blank" rel="noopener noreferrer"><img src="images/logos/zef.png" alt="ZEF logo" class="position-logo position-logo--zef" /></a>
+            <p class="position-desc"><strong>PhD Researcher.</strong> Two-year hydrological field study of the effects of land-use change and slash-and-burn agriculture on the water and nutrient cycle of smallholder agricultural systems in the eastern Amazon, Brazil.</p>
           </div>
         </div>
 
-        <div class="position-card position-card--logo">
-          <img src="images/logos/usda-ars.png" alt="USDA ARS logo" class="position-logo" />
-          <div class="position-card-body">
+        <div class="project-card position-card">
+          <div class="project-header">
+            <span class="project-summary-name">USDA Agricultural Research Service</span>
             <span class="position-date">Apr 1997 &ndash; Dec 1999</span>
-            <p class="position-title">Researcher / Intern &mdash; USDA Agricultural Research Service</p>
-            <p class="position-desc">Suitability of active microwave remote sensing for soil moisture monitoring; ground validation for SGP97 and SGP99 hydrology experiments, Oklahoma.</p>
+          </div>
+          <div class="position-detail">
+            <a href="https://www.ars.usda.gov/" target="_blank" rel="noopener noreferrer"><img src="images/logos/usda.png" alt="USDA ARS logo" class="position-logo" /></a>
+            <p class="position-desc"><strong>Researcher / Intern.</strong> Suitability of active microwave remote sensing for soil moisture monitoring; ground validation for SGP97 and SGP99 hydrology experiments, Oklahoma.</p>
           </div>
         </div>
 
-      </section>
+                  </section>
 
       <section id="publications" class="tab-panel">
         <h2>Publications</h2>
@@ -315,13 +414,6 @@
 
       </section>
 
-      <section id="projects" class="tab-panel">
-        <h2>Coding Projects</h2>
-        <p class="section-note">See the full <a href="coding.html">Coding</a> page for filters and detail.</p>
-        <div id="indexProjectCards"></div>
-
-      </section>
-
       <section id="talks" class="tab-panel">
         <h2>Talks</h2>
         <p class="placeholder-note"><!-- Add recorded talks or presentations here --></p>
@@ -333,15 +425,9 @@
         -->
       </section>
 
-      <section id="posts" class="tab-panel active">
+      <section id="posts" class="tab-panel">
         <h2>Posts</h2>
-        <div class="post-featured" id="postFeatured"></div>
-        <div class="post-nav">
-          <button class="post-nav-btn" id="postPrev">&#8592; Previous</button>
-          <span class="post-nav-counter" id="postCounter"></span>
-          <button class="post-nav-btn" id="postNext">Next &#8594;</button>
-        </div>
-        <div class="post-tiles" id="postTiles"></div>
+        <div id="indexPostCards"></div>
       </section>
 
     </main>
@@ -362,10 +448,5 @@
     });
 
     // ── Posts pager ───────────────────────────────────────────────
-    renderPostPager('postFeatured', 'postPrev', 'postCounter', 'postNext', 'postTiles');
-    // ── Coding cards ──────────────────────────────────────────────
-    renderCodingCards('indexProjectCards');
+    renderPostCards('indexPostCards');
   </script>
-
-</body>
-</html>

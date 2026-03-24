@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coding — Bart Wickel</title>
-  <meta name="description" content="Bart (A.J.) Wickel — Earth Scientist. Remote Sensing &amp; GIS, Ecohydrology, Climate Adaptation, Wetland Science, and Bird Conservation." />
-  <meta property="og:title" content="Bart (A.J.) Wickel" />
-  <meta property="og:description" content="Earth Scientist working in Remote Sensing &amp; GIS, Ecohydrology, Climate Adaptation, Wetland Science, and Bird Conservation." />
+  <title>Coding — Hydro-spatial mapping and more</title>
+  <meta name="description" content="Coding projects and tools for hydro-spatial mapping, remote sensing, GIS, and environmental analysis." />
+  <meta property="og:title" content="Coding — Hydro-spatial mapping and more" />
+  <meta property="og:description" content="Coding projects and tools for hydro-spatial mapping, remote sensing, GIS, and environmental analysis." />
   <meta property="og:url" content="https://hydrospheric0.github.io" />
   <meta property="og:type" content="website" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐦</text></svg>" />
@@ -18,11 +18,11 @@
   <!-- ── Top navigation bar ───────────────────────────────────── -->
   <header class="topbar">
     <nav class="topnav">
-      <a href="index.html" class="nav-link">About</a>
-      <a href="coding.html" class="nav-link active">Coding</a>
       <a href="posts.html" class="nav-link">Posts</a>
-      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="coding.html" class="nav-link active">Coding</a>
+      <!-- <a href="projects.html" class="nav-link">Projects</a> -->
       <a href="publications.html" class="nav-link">Publications</a>
+      <a href="index.html" class="nav-link">About</a>
     </nav>
   </header>
 
@@ -112,6 +112,106 @@
     renderCodingCards('codingCardsContainer');
 
     let activeCode = '', activeTheme = '';
+    const codingContainer = document.getElementById('codingCardsContainer');
+    Array.from(codingContainer.querySelectorAll('.project-card')).forEach((card, index) => {
+      card.dataset.order = String(index);
+    });
+
+    function restoreOriginalOrder() {
+      const cards = Array.from(codingContainer.querySelectorAll('.project-card'));
+      cards
+        .sort((left, right) => Number(left.dataset.order) - Number(right.dataset.order))
+        .forEach(card => codingContainer.appendChild(card));
+    }
+
+    function collapseHiddenExpandedCards() {
+      codingContainer.querySelectorAll('.project-card.project-card--expanded').forEach(card => {
+        if (card.style.display === 'none') card.classList.remove('project-card--expanded');
+      });
+    }
+
+    function attachExpansionHandlers() {
+      codingContainer.querySelectorAll('.project-summary-name').forEach(title => {
+        title.addEventListener('click', event => {
+          event.preventDefault();
+          const card = title.closest('.project-card');
+          const isExpanded = card.classList.contains('project-card--expanded');
+          restoreOriginalOrder();
+          codingContainer.querySelectorAll('.project-card.project-card--expanded')
+            .forEach(other => {
+              other.classList.remove('project-card--expanded');
+              const defaultBody = other.querySelector('.project-body');
+              if (defaultBody) defaultBody.style.display = '';
+              const dyn = other.querySelector('.dynamic-post-content');
+              if (dyn) dyn.style.display = 'none';
+            });
+          if (!isExpanded) {
+            const visibleCards = Array.from(codingContainer.querySelectorAll('.project-card'))
+              .filter(item => item.style.display !== 'none');
+            const visibleIndex = visibleCards.indexOf(card);
+            if (visibleIndex % 2 === 1) {
+              codingContainer.insertBefore(card, visibleCards[visibleIndex - 1]);
+            }
+            card.classList.add('project-card--expanded');
+
+            if (card.dataset.name === 'california-bird-atlas' && card.dataset.postHref) {
+              let dynamicContent = card.querySelector('.dynamic-post-content');
+              const defaultBody = card.querySelector('.project-body');
+              
+              if (!dynamicContent) {
+                dynamicContent = document.createElement('div');
+                dynamicContent.className = 'dynamic-post-content';
+                dynamicContent.style.flex = '1';
+                dynamicContent.style.overflowY = 'auto';
+                dynamicContent.innerHTML = '<p style="padding: 1rem; color: var(--muted);">Loading post content...</p>';
+                card.appendChild(dynamicContent);
+                
+                fetch(card.dataset.postHref)
+                  .then(res => res.text())
+                  .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const article = doc.querySelector('.post-article');
+                    if (article) {
+                      // Remove the title and date for the inline view
+                      const h3 = article.querySelector('h3');
+                      if (h3) h3.remove();
+                      const meta = article.querySelector('.post-article-meta');
+                      if (meta) meta.remove();
+                      
+                      // Fix relative image and link paths from the post page context
+                      article.querySelectorAll('img, a').forEach(el => {
+                        const attr = el.tagName === 'IMG' ? 'src' : 'href';
+                        const val = el.getAttribute(attr);
+                        if (val && val.startsWith('../')) {
+                          el.setAttribute(attr, val.replace('../', ''));
+                        }
+                      });
+                      dynamicContent.innerHTML = article.outerHTML;
+                      const innerArticle = dynamicContent.querySelector('.post-article');
+                      if (innerArticle) {
+                        innerArticle.style.border = 'none';
+                        innerArticle.style.boxShadow = 'none';
+                        innerArticle.style.padding = '0 0.5rem';
+                      }
+                    } else {
+                      dynamicContent.innerHTML = '<p style="padding: 1rem; color: var(--muted);">Could not load full content.</p>';
+                    }
+                  })
+                  .catch(err => {
+                    dynamicContent.innerHTML = '<p style="padding: 1rem; color: var(--muted);">Error loading content: ' + err + '</p>';
+                  });
+              }
+              
+              if (defaultBody) defaultBody.style.display = 'none';
+              dynamicContent.style.display = 'block';
+            }
+          }
+        });
+      });
+    }
+
+    attachExpansionHandlers();
 
     function applyFilters() {
       document.querySelectorAll('#codingCardsContainer .project-card').forEach(card => {
@@ -120,6 +220,8 @@
         const themeOk = !activeTheme || tags.includes(activeTheme);
         card.style.display = (codeOk && themeOk) ? '' : 'none';
       });
+      collapseHiddenExpandedCards();
+      restoreOriginalOrder();
     }
 
     document.querySelectorAll('.project-pill[data-group]').forEach(btn => {

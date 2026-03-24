@@ -2,6 +2,7 @@
 
 /* ── Posts (newest-first) ──────────────────────────────────────── */
 const POSTS = [
+  /*
   {
     title: 'twitcher',
     date: 'March 23, 2026',
@@ -51,6 +52,7 @@ const POSTS = [
     thumb: null,
     excerpt: 'Visualization tool for Christmas Bird Count data.'
   },
+  */
   {
     title: 'Help complete the California Bird Atlas',
     date: 'March 22, 2026',
@@ -156,19 +158,38 @@ const CODING_PROJECTS = [
 
 /* ── Rendering utilities ──────────────────────────────────────── */
 
+function getProjectTagClass(tag) {
+  const tagClasses = {
+    JavaScript: 'tag tag--javascript',
+    R: 'tag tag--r',
+    HTML: 'tag tag--html',
+    birds: 'tag tag--theme',
+    CBC: 'tag tag--theme',
+    eBird: 'tag tag--theme',
+    maps: 'tag tag--theme',
+    mapping: 'tag tag--theme',
+    rarities: 'tag tag--theme',
+    weather: 'tag tag--theme'
+  };
+  return tagClasses[tag] || 'tag tag--theme';
+}
+
 function buildProjectCardHTML(proj) {
   const typePill = proj.type === 'fork'
     ? '<span class="card-type-pill card-type-fork">Fork</span>'
     : '<span class="card-type-pill card-type-mine">My code</span>';
   const tagPills = proj.tags
     .filter(t => t !== 'My code' && t !== 'Fork')
-    .map(t => `<span class="tag">${t}</span>`).join('');
+    .map(t => `<span class="${getProjectTagClass(t)}">${t}</span>`).join('');
   const webappHeaderTag = proj.webappHref
     ? `<a href="${proj.webappHref}" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>`
     : '';
-  const nameEl = proj.postHref
-    ? `<a href="${proj.postHref}" class="project-post-link">${proj.name}</a>`
-    : proj.name;
+  // Name element: For webapp-ready coding projects prefer linking via the tile name directly to the app
+  const nameEl = proj.webappHref 
+    ? `<a href="${proj.webappHref}" target="_blank" rel="noopener noreferrer" class="project-post-link">${proj.name}</a>`
+    : (proj.postHref
+      ? `<a href="${proj.postHref}" class="project-post-link">${proj.name}</a>`
+      : proj.name);
   const linkTags = [
     `<a href="${proj.sourceHref}" target="_blank" rel="noopener noreferrer" class="tag tag-source">Source</a>`,
     proj.webappHref ? `<a href="${proj.webappHref}" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>` : '',
@@ -176,7 +197,9 @@ function buildProjectCardHTML(proj) {
   ].filter(Boolean).join('\n                  ');
   const body = proj.thumb
     ? `<div class="project-body project-body--thumb">
-              <img src="${proj.thumb}" alt="${proj.thumbAlt}" class="project-thumb" />
+              ${proj.webappHref 
+                ? `<a href="${proj.webappHref}" target="_blank" rel="noopener noreferrer"><img src="${proj.thumb}" alt="${proj.thumbAlt}" class="project-thumb" /></a>` 
+                : `<img src="${proj.thumb}" alt="${proj.thumbAlt}" class="project-thumb" />`}
               <div class="project-body-text">
                 <p>${proj.description}</p>
                 <div class="project-tags">${linkTags}</div>
@@ -186,7 +209,7 @@ function buildProjectCardHTML(proj) {
               <p>${proj.description}</p>
               <div class="project-tags">${linkTags}</div>
             </div>`;
-  return `        <div class="project-card" data-tags="${proj.tags.join(' ')}">
+  return `        <div class="project-card" data-tags="${proj.tags.join(' ')}" data-name="${proj.name}" data-post-href="${proj.postHref || ''}">
           <div class="project-header">
             <span class="project-summary-name">${nameEl}</span>
             <div class="project-summary-tags">${typePill}${tagPills}${webappHeaderTag}</div>
@@ -198,6 +221,32 @@ function buildProjectCardHTML(proj) {
 function renderCodingCards(containerId) {
   const el = document.getElementById(containerId);
   if (el) el.innerHTML = CODING_PROJECTS.map(buildProjectCardHTML).join('\n');
+}
+
+function buildPostCardHTML(post) {
+  const thumbHtml = post.thumb
+    ? `<img src="${post.thumb}" alt="${post.title}" class="post-card-thumb" />`
+    : '';
+  return `        <article class="project-card post-card">
+          <div class="project-header">
+            <span class="project-summary-name"><a href="${post.href}" class="project-post-link">${post.title}</a></span>
+            <span class="position-date">${post.date}</span>
+          </div>
+          <div class="project-body${post.thumb ? ' project-body--thumb' : ''}">
+            ${thumbHtml}
+            <div class="project-body-text">
+              <p>${post.excerpt}</p>
+              <div class="project-tags">
+                <a href="${post.href}" class="tag tag-post">Read</a>
+              </div>
+            </div>
+          </div>
+        </article>`;
+}
+
+function renderPostCards(containerId) {
+  const el = document.getElementById(containerId);
+  if (el) el.innerHTML = POSTS.map(buildPostCardHTML).join('\n');
 }
 
 function renderPostPager(featuredId, prevId, counterId, nextId, tilesId) {

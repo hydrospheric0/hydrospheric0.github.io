@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Posts — Bart Wickel</title>
-  <meta name="description" content="Bart (A.J.) Wickel — Earth Scientist. Remote Sensing &amp; GIS, Ecohydrology, Climate Adaptation, Wetland Science, and Bird Conservation." />
-  <meta property="og:title" content="Bart (A.J.) Wickel" />
-  <meta property="og:description" content="Earth Scientist working in Remote Sensing &amp; GIS, Ecohydrology, Climate Adaptation, Wetland Science, and Bird Conservation." />
+  <title>Posts — Hydro-spatial mapping and more</title>
+  <meta name="description" content="Posts on hydro-spatial mapping, remote sensing, GIS, climate adaptation, wetland science, and bird conservation." />
+  <meta property="og:title" content="Posts — Hydro-spatial mapping and more" />
+  <meta property="og:description" content="Posts on hydro-spatial mapping, remote sensing, GIS, climate adaptation, wetland science, and bird conservation." />
   <meta property="og:url" content="https://hydrospheric0.github.io" />
   <meta property="og:type" content="website" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐦</text></svg>" />
@@ -18,11 +18,11 @@
   <!-- ── Top navigation bar ───────────────────────────────────── -->
   <header class="topbar">
     <nav class="topnav">
-      <a href="index.html" class="nav-link">About</a>
-      <a href="coding.html" class="nav-link">Coding</a>
       <a href="posts.html" class="nav-link active">Posts</a>
-      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="coding.html" class="nav-link">Coding</a>
+      <!-- <a href="projects.html" class="nav-link">Projects</a> -->
       <a href="publications.html" class="nav-link">Publications</a>
+      <a href="index.html" class="nav-link">About</a>
     </nav>
   </header>
 
@@ -72,22 +72,16 @@
 
     <main class="content">
 
-            <section id="posts">
+      <section id="posts">
         <h2>Posts</h2>
-        <div class="post-featured" id="postFeatured"></div>
-        <div class="post-nav">
-          <button class="post-nav-btn" id="postPrev">&#8592; Previous</button>
-          <span class="post-nav-counter" id="postCounter"></span>
-          <button class="post-nav-btn" id="postNext">Next &#8594;</button>
-        </div>
-        <div class="post-tiles" id="postTiles"></div>
+        <div id="postCardsContainer"></div>
       </section>
 
     </main>
   </div><!-- /.page-wrap -->
 
   <script>
-    renderPostPager('postFeatured', 'postPrev', 'postCounter', 'postNext', 'postTiles');
+    renderPostCards('postCardsContainer');
   </script>
 
 </body>
