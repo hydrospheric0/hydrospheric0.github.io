@@ -511,8 +511,8 @@ body {
 .post-figure--right {
   float: right;
   margin: 0 0 1rem 1.5rem;
-  max-width: 280px;
-  width: 38%;
+  max-width: 420px;
+  width: 48%;
 }
 
 .post-figure--right img { width: 100%; max-width: none; }
