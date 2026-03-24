@@ -562,6 +562,9 @@ main section[id] { scroll-margin-top: 58px; }
 
 
 
+/* ── Post reading column (max-width for readability with sidebar) */
+.post-reading-col { max-width: 720px; }
+
 /* ── Post meta bar (links + tags + share on one line) ─────────── */
 .post-meta-bar {
   margin-top: 1.25rem;
