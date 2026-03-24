@@ -542,10 +542,11 @@
         .catch(() => { document.getElementById('post-content-mount').innerHTML = '<p style="padding:2rem">Could not load post.</p>'; });
     }
 
-    // Card click handlers (initial cards) — title and button both open post
+    // Card click handlers — navigate to posts.html anchored at the correct post
     document.querySelectorAll('.post-card').forEach(card => {
-      card.querySelector('.post-card-btn').addEventListener('click', () => showPost(card.dataset.post));
-      card.querySelector('.post-card-title').addEventListener('click', () => showPost(card.dataset.post));
+      const go = () => { window.location.href = 'posts.html#' + card.dataset.post; };
+      card.querySelector('.post-card-btn').addEventListener('click', go);
+      card.querySelector('.post-card-title').addEventListener('click', go);
     });
 
     // "All posts" back button
