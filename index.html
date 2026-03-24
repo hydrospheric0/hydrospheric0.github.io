@@ -17,10 +17,11 @@
   <!-- ── Top navigation bar ───────────────────────────────────── -->
   <header class="topbar">
     <nav class="topnav">
-      <a href="#" class="tab-link active" data-tab="projects">Projects</a>
-      <a href="#" class="tab-link" data-tab="posts">Posts</a>
-      <a href="#" class="tab-link" data-tab="publications">Publications</a>
-      <a href="#" class="tab-link" data-tab="about">About</a>
+      <a href="#coding"       class="nav-link">Coding</a>
+      <a href="#posts"        class="nav-link">Posts</a>
+      <a href="#projects"     class="nav-link">Projects</a>
+      <a href="#experience"   class="nav-link">Experience</a>
+      <a href="#publications" class="nav-link">Publications</a>
     </nav>
   </header>
 
@@ -65,22 +66,277 @@
           LinkedIn
         </a>
       </div>
+
+      <p class="sidebar-bio">Earth scientist developing spatial tools for water, ecosystems, and biodiversity conservation. Currently: independent research at <a href="https://metoliusresearch.org" target="_blank" rel="noopener noreferrer">Metolius Research</a>, Davis CA.</p>
     </aside>
 
     <main class="content">
 
-      <section id="about" class="tab-panel">
-        <h2>About</h2>
-        <p>
-          I am an Earth Scientist who develops spatial tools using Remote Sensing and GIS in an attempt to help
-          solve global to local climate, water, and ecosystem crises. Throughout my career I have worked in a
-          variety of applied research settings on projects related to conservation, water resource planning and
-          management, ecosystem studies (forests and wetlands), national forest fire monitoring, fossil fuel
-          industry impact studies, renewable energy zone planning, and climate change adaptation. I strongly
-          support the development of open spatial data and tools.
-        </p>
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <section id="coding">
+        <h2>Coding</h2>
+        <p class="section-note">Personal GitHub projects &mdash; <a href="https://github.com/hydrospheric0" target="_blank" rel="noopener noreferrer">github.com/hydrospheric0</a></p>
 
-        <h3 class="subsection-title">Positions</h3>
+        <div class="filter-group">
+          <span class="filter-label">Code</span>
+          <div class="project-filters">
+            <button class="project-pill active" data-group="code" data-filter="">All</button>
+            <button class="project-pill" data-group="code" data-filter="My code">My code</button>
+            <button class="project-pill fork-pill" data-group="code" data-filter="Fork">Fork</button>
+            <button class="project-pill" data-group="code" data-filter="JavaScript">JavaScript</button>
+            <button class="project-pill" data-group="code" data-filter="R">R</button>
+            <button class="project-pill" data-group="code" data-filter="HTML">HTML</button>
+          </div>
+        </div>
+        <div class="filter-group filter-group--last">
+          <span class="filter-label">Theme</span>
+          <div class="project-filters">
+            <button class="project-pill active" data-group="theme" data-filter="">All</button>
+            <button class="project-pill" data-group="theme" data-filter="birds">Birds</button>
+            <button class="project-pill" data-group="theme" data-filter="CBC">CBC</button>
+            <button class="project-pill" data-group="theme" data-filter="eBird">eBird</button>
+            <button class="project-pill" data-group="theme" data-filter="maps">Maps</button>
+            <button class="project-pill" data-group="theme" data-filter="mapping">Mapping</button>
+            <button class="project-pill" data-group="theme" data-filter="rarities">Rarities</button>
+            <button class="project-pill" data-group="theme" data-filter="weather">Weather</button>
+          </div>
+        </div>
+
+        <div class="project-card" data-tags="My code JavaScript eBird birds maps">
+          <details class="project-details">
+            <summary class="project-summary">
+              <span class="project-summary-name"><a href="posts.html#post-calbirds-atlas" class="project-post-link">california-bird-atlas</a></span>
+              <div class="project-summary-tags">
+                <span class="card-type-pill card-type-mine">My code</span>
+                <span class="tag">JavaScript</span><span class="tag">eBird</span><span class="tag">birds</span>
+                <a href="https://calbirds-atlas.pages.dev/" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>
+              </div>
+            </summary>
+            <div class="project-body">
+              <p>Web-based app showing your location relative to the California Bird Atlas grid, with basic coverage statistics. Works in any mobile browser.</p>
+              <div class="project-tags">
+                <a href="https://github.com/hydrospheric0/calbirds-atlas" target="_blank" rel="noopener noreferrer" class="tag tag-source">Source</a>
+                <a href="https://calbirds-atlas.pages.dev/" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>
+                <a href="posts.html#post-calbirds-atlas" class="tag tag-post">Post</a>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="project-card" data-tags="My code JavaScript eBird rarities">
+          <details class="project-details">
+            <summary class="project-summary">
+              <span class="project-summary-name"><a href="posts.html#post-twitcher" class="project-post-link">twitcher</a></span>
+              <div class="project-summary-tags">
+                <span class="card-type-pill card-type-mine">My code</span>
+                <span class="tag">JavaScript</span><span class="tag">eBird</span><span class="tag">rarities</span>
+              </div>
+            </summary>
+            <div class="project-body">
+              <p>Interactive tool for tracking eBird rarity and target-species sightings by region. Queries the eBird API to flag rare and unusual birds and renders occurrence maps for trip planning and local monitoring.</p>
+              <div class="project-tags">
+                <a href="https://github.com/hydrospheric0/twitcher" target="_blank" rel="noopener noreferrer" class="tag tag-source">Source</a>
+                <a href="posts.html#post-twitcher" class="tag tag-post">Post</a>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="project-card" data-tags="Fork R eBird mapping">
+          <details class="project-details">
+            <summary class="project-summary">
+              <span class="project-summary-name"><a href="posts.html#post-lifer" class="project-post-link">lifeR</a></span>
+              <div class="project-summary-tags">
+                <span class="card-type-pill card-type-fork">Fork</span>
+                <span class="tag">R</span><span class="tag">eBird</span><span class="tag">mapping</span>
+              </div>
+            </summary>
+            <div class="project-body">
+              <p>Create animated maps of missing lifer birds using eBird Status &amp; Trends occurrence data. Fork of <a href="https://github.com/smsfrn/lifeR" target="_blank" rel="noopener noreferrer">lifeR</a> by Samuel Safran.</p>
+              <div class="project-tags">
+                <a href="https://github.com/hydrospheric0/lifeR" target="_blank" rel="noopener noreferrer" class="tag tag-source">Source</a>
+                <a href="posts.html#post-lifer" class="tag tag-post">Post</a>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="project-card" data-tags="My code JavaScript eBird CBC">
+          <details class="project-details">
+            <summary class="project-summary">
+              <span class="project-summary-name">CBC compiler</span>
+              <div class="project-summary-tags">
+                <span class="card-type-pill card-type-mine">My code</span>
+                <span class="tag">JavaScript</span><span class="tag">CBC</span>
+              </div>
+            </summary>
+            <div class="project-body">
+              <p>Automation scripts for compiling Audubon Christmas Bird Count data &mdash; merging field sheets, computing sector summaries, and generating formatted reports for submission.</p>
+              <div class="project-tags">
+                <a href="https://github.com/hydrospheric0/cbc-compiler" target="_blank" rel="noopener noreferrer" class="tag tag-source">Source</a>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="project-card" data-tags="My code HTML CBC">
+          <details class="project-details">
+            <summary class="project-summary">
+              <span class="project-summary-name">cbc-capcplot</span>
+              <div class="project-summary-tags">
+                <span class="card-type-pill card-type-mine">My code</span>
+                <span class="tag">HTML</span><span class="tag">CBC</span>
+                <a href="https://hydrospheric0.github.io/cbc-capcplot/" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>
+              </div>
+            </summary>
+            <div class="project-body">
+              <p>Visualization tool for Christmas Bird Count data.</p>
+              <div class="project-tags">
+                <a href="https://github.com/hydrospheric0/cbc-capcplot" target="_blank" rel="noopener noreferrer" class="tag tag-source">Source</a>
+                <a href="https://hydrospheric0.github.io/cbc-capcplot/" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="project-card" data-tags="My code JavaScript CBC birds">
+          <details class="project-details">
+            <summary class="project-summary">
+              <span class="project-summary-name">cbc-historic</span>
+              <div class="project-summary-tags">
+                <span class="card-type-pill card-type-mine">My code</span>
+                <span class="tag">JavaScript</span><span class="tag">CBC</span>
+                <a href="https://hydrospheric0.github.io/cbc-historic/" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>
+              </div>
+            </summary>
+            <div class="project-body">
+              <p>Tool for improving access to historical Christmas Bird Count data.</p>
+              <div class="project-tags">
+                <a href="https://github.com/hydrospheric0/cbc-historic" target="_blank" rel="noopener noreferrer" class="tag tag-source">Source</a>
+                <a href="https://hydrospheric0.github.io/cbc-historic/" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="project-card" data-tags="My code JavaScript CBC weather">
+          <details class="project-details">
+            <summary class="project-summary">
+              <span class="project-summary-name">cbc-weather</span>
+              <div class="project-summary-tags">
+                <span class="card-type-pill card-type-mine">My code</span>
+                <span class="tag">JavaScript</span><span class="tag">CBC</span><span class="tag">weather</span>
+                <a href="https://hydrospheric0.github.io/cbc-weather/" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>
+              </div>
+            </summary>
+            <div class="project-body">
+              <p>CBC weather mapping tool &mdash; visualizes weather conditions recorded during Audubon Christmas Bird Counts.</p>
+              <div class="project-tags">
+                <a href="https://github.com/hydrospheric0/cbc-weather" target="_blank" rel="noopener noreferrer" class="tag tag-source">Source</a>
+                <a href="https://hydrospheric0.github.io/cbc-weather/" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="project-card" data-tags="My code JavaScript CBC">
+          <details class="project-details">
+            <summary class="project-summary">
+              <span class="project-summary-name">cbc-webtools</span>
+              <div class="project-summary-tags">
+                <span class="card-type-pill card-type-mine">My code</span>
+                <span class="tag">JavaScript</span><span class="tag">CBC</span>
+              </div>
+            </summary>
+            <div class="project-body">
+              <p>Web tools supporting Christmas Bird Count data workflows.</p>
+              <div class="project-tags">
+                <a href="https://github.com/hydrospheric0/cbc-webtools" target="_blank" rel="noopener noreferrer" class="tag tag-source">Source</a>
+              </div>
+            </div>
+          </details>
+        </div>
+
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <section id="posts">
+        <h2>Posts</h2>
+        <div class="post-cards">
+
+          <article class="post-card">
+            <a href="posts.html#post-calbirds-atlas">
+              <img src="images/calbirds_app.png" class="post-card-thumb" alt="CA Bird Atlas app" />
+            </a>
+            <div class="post-card-body">
+              <span class="post-article-date">March 22, 2026</span>
+              <a href="posts.html#post-calbirds-atlas"><h3 class="post-card-title">Help complete the California Bird Atlas</h3></a>
+              <p class="post-card-excerpt">A small mobile web-app that shows your location relative to the California Breeding Bird Atlas grid and provides block coverage statistics.</p>
+              <a href="posts.html#post-calbirds-atlas" class="post-card-btn">Read &rarr;</a>
+            </div>
+          </article>
+
+          <article class="post-card">
+            <a href="posts.html#post-lifer">
+              <img src="images/lifer-thumbnail.jpg" class="post-card-thumb" alt="lifeR map" />
+            </a>
+            <div class="post-card-body">
+              <span class="post-article-date">March 21, 2026</span>
+              <a href="posts.html#post-lifer"><h3 class="post-card-title">Mapping my &ldquo;Lifer&rdquo; Bird List with lifeR</h3></a>
+              <p class="post-card-excerpt">Using eBird Status &amp; Trends occurrence data to generate animated weekly maps of potential life-list birds across the US.</p>
+              <a href="posts.html#post-lifer" class="post-card-btn">Read &rarr;</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <section id="projects">
+        <h2>Projects</h2>
+        <p class="section-note">Field research, spatial analysis, and conservation mapping. Expanding progressively.</p>
+
+        <div class="proj-entry">
+          <div class="proj-entry-head">
+            <span class="proj-entry-year">2022&ndash;2024</span>
+            <span class="proj-entry-title">Global Conservation Threat Mapping</span>
+            <span class="proj-entry-org">Earth Insight &middot; WCPA / IUCN</span>
+          </div>
+          <p class="proj-entry-desc">Spatial analysis of fossil fuel, mining, and industrial expansion threats to protected areas, key biodiversity areas, and tropical forests across 100+ countries. Multiple peer reports and datasets used in international conservation policy.</p>
+        </div>
+
+        <div class="proj-entry">
+          <div class="proj-entry-head">
+            <span class="proj-entry-year">2019&ndash;2020</span>
+            <span class="proj-entry-title">Bolivia WATCH: Fire and Water Analysis</span>
+            <span class="proj-entry-org">SEI / USAID</span>
+          </div>
+          <p class="proj-entry-desc">Multi-scale hydro-ecological analysis of the 2019 Chiquitania fires; combined remote sensing, hydrological modelling, and field data. SEI Technical Report, 64 pp.</p>
+        </div>
+
+        <div class="proj-entry">
+          <div class="proj-entry-head">
+            <span class="proj-entry-year">2015&ndash;2017</span>
+            <span class="proj-entry-title">Vjosa River Hydro-ecological Assessment</span>
+            <span class="proj-entry-org">UNDP Albania / EU-FPIP</span>
+          </div>
+          <p class="proj-entry-desc">Assessment of hydro-ecological and socio-economic systems of the Vjosa River, Albania. Climate-change and development scenario modelling. UNDP Technical Report, 114 pp.</p>
+        </div>
+
+        <div class="proj-entry">
+          <div class="proj-entry-head">
+            <span class="proj-entry-year">2004&ndash;2006</span>
+            <span class="proj-entry-title">Mexico National Forest Fire Detection System</span>
+            <span class="proj-entry-org">GIZ / CONABIO &middot; Mexico City</span>
+          </div>
+          <p class="proj-entry-desc">Developed and implemented Mexico&rsquo;s satellite-based near-real-time forest fire detection system (MODIS/AVHRR). Capacity building with Mexican and Central American government partners.</p>
+        </div>
+
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <section id="experience">
+        <h2>Experience</h2>
 
         <div class="position-card">
           <span class="position-date">Oct 2025 &ndash; Present</span>
@@ -119,7 +375,7 @@
         <div class="position-card">
           <span class="position-date">Jan 2007 &ndash; Jul 2013</span>
           <p class="position-title">Senior Scientist &mdash; Lead Hydrologist &mdash; World Wildlife Fund</p>
-          <p class="position-desc">Freshwater science support to field programs; climate change adaptation approaches and large river basin analyses. Trained 300+ staff of WWF and strategic partners (NGOs, national governments, multilateral agencies). Washington, DC.</p>
+          <p class="position-desc">Freshwater science support to field programs; climate change adaptation approaches and large river basin analyses. Trained 300+ staff of WWF and strategic partners. Washington, DC.</p>
         </div>
 
         <div class="position-card">
@@ -148,7 +404,8 @@
 
       </section>
 
-      <section id="publications" class="tab-panel">
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <section id="publications">
         <h2>Publications</h2>
 
         <h3 class="subsection-title">Peer-reviewed articles</h3>
@@ -162,7 +419,7 @@
         </div>
 
         <div class="pub-entry">
-          <p>Angarita, H., <strong>Wickel, A.J.</strong>, Sieber, J., Delgado, J. and Purkey, D. (2018). Large-scale impacts of hydropower development and climate change on the Momp&oacute;s Depression wetlands, Colombia. <em>Hydrology and Earth System Sciences</em>, 22: 2839&ndash;2865. <a href="https://doi.org/10.5194/hess-22-2839-2018" target="_blank" rel="noopener noreferrer">[DOI]</a></p>
+          <p>Angarita, H., <strong>Wickel, A.J.</strong>, Sieber, J., Delgado, J. and Purkey, D. (2018). Large-scale impacts of hydropower development and climate change on the Mompós Depression wetlands, Colombia. <em>Hydrology and Earth System Sciences</em>, 22: 2839&ndash;2865. <a href="https://doi.org/10.5194/hess-22-2839-2018" target="_blank" rel="noopener noreferrer">[DOI]</a></p>
         </div>
 
         <div class="pub-entry">
@@ -292,240 +549,7 @@
         </div>
 
         <div class="pub-entry">
-          <p><strong>Wickel, A.J.</strong> (1997). Rainfall interception modeling in lowland and montane rain forest in the Luquillo Mountains, Puerto Rico. Working Paper no. 2. Modeling of Tropical Island Hydrology Project. <em>MSc Thesis,</em> Vrije Universiteit, Amsterdam. 60 pp.</p>
-        </div>
-
-      </section>
-
-      <section id="projects" class="tab-panel active">
-        <h2>Projects</h2>
-
-        <!-- ── Two-level filters ───────────────────────────────── -->
-        <div class="filter-group">
-          <span class="filter-label">Code</span>
-          <div class="project-filters">
-            <button class="project-pill active" data-group="code" data-filter="">All</button>
-            <button class="project-pill" data-group="code" data-filter="My code">My code</button>
-            <button class="project-pill fork-pill" data-group="code" data-filter="Fork">Fork</button>
-            <button class="project-pill" data-group="code" data-filter="JavaScript">JavaScript</button>
-            <button class="project-pill" data-group="code" data-filter="R">R</button>
-            <button class="project-pill" data-group="code" data-filter="HTML">HTML</button>
-          </div>
-        </div>
-        <div class="filter-group" style="margin-bottom:1.1rem">
-          <span class="filter-label">Theme</span>
-          <div class="project-filters">
-            <button class="project-pill active" data-group="theme" data-filter="">All</button>
-            <button class="project-pill" data-group="theme" data-filter="birds">Birds</button>
-            <button class="project-pill" data-group="theme" data-filter="CBC">CBC</button>
-            <button class="project-pill" data-group="theme" data-filter="eBird">eBird</button>
-            <button class="project-pill" data-group="theme" data-filter="maps">Maps</button>
-            <button class="project-pill" data-group="theme" data-filter="mapping">Mapping</button>
-            <button class="project-pill" data-group="theme" data-filter="rarities">Rarities</button>
-            <button class="project-pill" data-group="theme" data-filter="weather">Weather</button>
-          </div>
-        </div>
-
-        <!-- newest first -->
-
-        <div class="project-card" data-tags="My code JavaScript eBird birds maps">
-          <details class="project-details">
-            <summary class="project-summary">
-              <span class="project-summary-name"><a href="#" class="post-tab-link" data-tab="posts" data-post="post-calbirds-atlas">california-bird-atlas</a></span>
-              <div class="project-summary-tags">
-                <span class="card-type-pill card-type-mine">My code</span>
-                <span class="tag">JavaScript</span><span class="tag">eBird</span><span class="tag">birds</span>
-                <a href="https://calbirds-atlas.pages.dev/" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>
-              </div>
-            </summary>
-            <div class="project-body">
-              <p>Web-based app showing your location relative to the California Bird Atlas grid, with basic coverage statistics. Works in any mobile browser.</p>
-              <div class="project-tags">
-                <a href="https://github.com/hydrospheric0/calbirds-atlas" target="_blank" rel="noopener noreferrer" class="tag tag-source">Source code</a>
-                <a href="https://calbirds-atlas.pages.dev/" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>
-              </div>
-            </div>
-          </details>
-        </div>
-
-        <div class="project-card" data-tags="My code JavaScript eBird rarities">
-          <details class="project-details">
-            <summary class="project-summary">
-              <span class="project-summary-name"><a href="#" class="post-tab-link" data-tab="posts" data-post="post-twitcher">twitcher</a></span>
-              <div class="project-summary-tags">
-                <span class="card-type-pill card-type-mine">My code</span>
-                <span class="tag">JavaScript</span><span class="tag">eBird</span><span class="tag">rarities</span>
-                <a href="https://twitcher.io" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>
-              </div>
-            </summary>
-            <div class="project-body">
-              <p>Interactive tool for tracking eBird rarity and target-species sightings by region. Queries the eBird API to flag rare and unusual birds and renders occurrence maps for trip planning and local monitoring.</p>
-              <div class="project-tags">
-                <a href="https://github.com/hydrospheric0/twitcher" target="_blank" rel="noopener noreferrer" class="tag tag-source">Source code</a>
-                <a href="https://twitcher.io" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>
-              </div>
-            </div>
-          </details>
-        </div>
-
-        <div class="project-card" data-tags="Fork R eBird mapping">
-          <details class="project-details">
-            <summary class="project-summary">
-              <span class="project-summary-name"><a href="#" class="post-tab-link" data-tab="posts" data-post="post-lifer">lifeR</a></span>
-              <div class="project-summary-tags">
-                <span class="card-type-pill card-type-fork">Fork</span>
-                <span class="tag">R</span><span class="tag">eBird</span><span class="tag">mapping</span>
-              </div>
-            </summary>
-            <div class="project-body">
-              <p>Create animated maps of missing lifer birds using eBird Status &amp; Trends occurrence data. Fork of <a href="https://github.com/smsfrn/lifeR" target="_blank" rel="noopener noreferrer">lifeR</a> by Samuel Safran.</p>
-              <div class="project-tags">
-                <a href="https://github.com/hydrospheric0/lifeR" target="_blank" rel="noopener noreferrer" class="tag tag-source">Source code</a>
-              </div>
-            </div>
-          </details>
-        </div>
-
-        <div class="project-card" data-tags="My code JavaScript eBird CBC">
-          <details class="project-details">
-            <summary class="project-summary">
-              <span class="project-summary-name"><a href="#" class="post-tab-link" data-tab="posts" data-post="post-cbc-compiler">CBC compiler</a></span>
-              <div class="project-summary-tags">
-                <span class="card-type-pill card-type-mine">My code</span>
-                <span class="tag">JavaScript</span><span class="tag">eBird</span><span class="tag">CBC</span>
-              </div>
-            </summary>
-            <div class="project-body">
-              <p>Automation scripts for compiling Audubon Christmas Bird Count data &mdash; merging field sheets, computing sector summaries, and generating formatted reports for submission to national databases.</p>
-              <div class="project-tags">
-                <a href="https://github.com/hydrospheric0/cbc-compiler" target="_blank" rel="noopener noreferrer" class="tag tag-source">Source code</a>
-              </div>
-            </div>
-          </details>
-        </div>
-
-        <div class="project-card" data-tags="My code HTML CBC">
-          <details class="project-details">
-            <summary class="project-summary">
-              <span class="project-summary-name">cbc-capcplot</span>
-              <div class="project-summary-tags">
-                <span class="card-type-pill card-type-mine">My code</span>
-                <span class="tag">HTML</span><span class="tag">CBC</span>
-                <a href="https://hydrospheric0.github.io/cbc-capcplot/" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>
-              </div>
-            </summary>
-            <div class="project-body">
-              <p>Visualization tool for Christmas Bird Count data.</p>
-              <div class="project-tags">
-                <a href="https://github.com/hydrospheric0/cbc-capcplot" target="_blank" rel="noopener noreferrer" class="tag tag-source">Source code</a>
-                <a href="https://hydrospheric0.github.io/cbc-capcplot/" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>
-              </div>
-            </div>
-          </details>
-        </div>
-
-        <div class="project-card" data-tags="My code JavaScript CBC birds">
-          <details class="project-details">
-            <summary class="project-summary">
-              <span class="project-summary-name">cbc-historic</span>
-              <div class="project-summary-tags">
-                <span class="card-type-pill card-type-mine">My code</span>
-                <span class="tag">JavaScript</span><span class="tag">CBC</span>
-                <a href="https://hydrospheric0.github.io/cbc-historic/" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>
-              </div>
-            </summary>
-            <div class="project-body">
-              <p>Tool developed to improve access to historical Christmas Bird Count data.</p>
-              <div class="project-tags">
-                <a href="https://github.com/hydrospheric0/cbc-historic" target="_blank" rel="noopener noreferrer" class="tag tag-source">Source code</a>
-                <a href="https://hydrospheric0.github.io/cbc-historic/" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>
-              </div>
-            </div>
-          </details>
-        </div>
-
-        <div class="project-card" data-tags="My code JavaScript CBC weather">
-          <details class="project-details">
-            <summary class="project-summary">
-              <span class="project-summary-name">cbc-weather</span>
-              <div class="project-summary-tags">
-                <span class="card-type-pill card-type-mine">My code</span>
-                <span class="tag">JavaScript</span><span class="tag">CBC</span><span class="tag">weather</span>
-                <a href="https://hydrospheric0.github.io/cbc-weather/" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>
-              </div>
-            </summary>
-            <div class="project-body">
-              <p>CBC weather mapping tool &mdash; visualizes weather conditions recorded during Audubon Christmas Bird Counts.</p>
-              <div class="project-tags">
-                <a href="https://github.com/hydrospheric0/cbc-weather" target="_blank" rel="noopener noreferrer" class="tag tag-source">Source code</a>
-                <a href="https://hydrospheric0.github.io/cbc-weather/" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>
-              </div>
-            </div>
-          </details>
-        </div>
-
-        <div class="project-card" data-tags="My code JavaScript CBC">
-          <details class="project-details">
-            <summary class="project-summary">
-              <span class="project-summary-name">cbc-webtools</span>
-              <div class="project-summary-tags">
-                <span class="card-type-pill card-type-mine">My code</span>
-                <span class="tag">JavaScript</span><span class="tag">CBC</span>
-              </div>
-            </summary>
-            <div class="project-body">
-              <p>Web tools supporting Christmas Bird Count data workflows.</p>
-              <div class="project-tags">
-                <a href="https://github.com/hydrospheric0/cbc-webtools" target="_blank" rel="noopener noreferrer" class="tag tag-source">Source code</a>
-              </div>
-            </div>
-          </details>
-        </div>
-
-      </section>
-
-      <section id="posts" class="tab-panel">
-        <h2>Posts</h2>
-
-        <!-- ── Post cards (default view) ─────────────────────── -->
-        <div class="post-cards" id="post-cards">
-
-          <article class="post-card" id="card-calbirds-atlas" data-post="post-calbirds-atlas">
-            <img src="images/calbirds_app.png" class="post-card-thumb" alt="CA Bird Atlas app" />
-            <div class="post-card-body">
-              <span class="post-article-date">March 22, 2026</span>
-              <h3 class="post-card-title">Help complete the California Bird Atlas</h3>
-              <p class="post-card-excerpt">A small mobile web-app that shows your location relative to the California Breeding Bird Atlas grid and provides block coverage statistics.</p>
-              <button class="post-card-btn">Read &rarr;</button>
-            </div>
-          </article>
-
-          <article class="post-card" id="card-post-lifer" data-post="post-lifer">
-            <img src="images/lifer-thumbnail.jpg" class="post-card-thumb" alt="lifeR map" />
-            <div class="post-card-body">
-              <span class="post-article-date">March 21, 2026</span>
-              <h3 class="post-card-title">Mapping my &ldquo;Lifer&rdquo; Bird List with lifeR</h3>
-              <p class="post-card-excerpt">Using eBird Status &amp; Trends occurrence data to generate animated weekly maps of potential life-list birds across the US.</p>
-              <button class="post-card-btn">Read &rarr;</button>
-            </div>
-          </article>
-
-
-
-        </div><!-- /.post-cards -->
-
-        <!-- ── Full post view ───────────────────────────────────── -->
-        <div class="post-full" id="post-full" style="display:none">
-          <div id="post-content-mount"></div>
-        </div><!-- /.post-full -->
-
-        <!-- ── Other posts strip (shown below active post) ─────── -->
-        <div class="post-other" id="post-other" style="display:none">
-          <div class="post-other-header">
-            <button class="post-back-btn" id="post-back-btn">&larr; All posts</button>
-            <h4 class="post-other-heading">Other posts</h4>
-          </div>
-          <div class="post-cards post-cards--compact" id="post-other-cards"></div>
+          <p><strong>Wickel, A.J.</strong> (1997). Rainfall interception modeling in lowland and montane rain forest in the Luquillo Mountains, Puerto Rico. Working Paper no. 2. <em>MSc Thesis,</em> Vrije Universiteit, Amsterdam. 60 pp.</p>
         </div>
 
       </section>
@@ -534,137 +558,12 @@
   </div><!-- /.page-wrap -->
 
   <script>
-    const links = document.querySelectorAll('.tab-link');
-    const panels = document.querySelectorAll('.tab-panel');
-    links.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const target = link.dataset.tab;
-        links.forEach(l => l.classList.remove('active'));
-        panels.forEach(p => p.classList.remove('active'));
-        link.classList.add('active');
-        document.getElementById(target).classList.add('active');
-      });
-    });
-
-    // Post card data (thumbnails + excerpts for "Other posts" strip)
-    const POST_META = {
-      'post-calbirds-atlas': {
-        cardId: 'card-calbirds-atlas',
-        thumb: 'images/calbirds_app.png',
-        title: 'Help complete the California Bird Atlas',
-        date: 'March 22, 2026',
-        excerpt: 'A small mobile web-app showing your location relative to the CA BBA grid with block coverage statistics.'
-      },
-      'post-lifer': {
-        cardId: 'card-post-lifer',
-        thumb: 'images/lifer-thumbnail.jpg',
-        title: 'Mapping my \u201cLifer\u201d Bird List with lifeR',
-        date: 'March 21, 2026',
-        excerpt: 'Using eBird Status & Trends occurrence data to generate animated weekly maps of potential life-list birds across the US.'
-      },
-      'post-twitcher': {
-        cardId: 'card-twitcher',
-        thumb: 'images/twitcher-screenshot.png',
-        title: 'twitcher',
-        date: 'March 23, 2026',
-        excerpt: 'Interactive tool for tracking eBird rarity and target-species sightings by region.'
-      }
-    };
-
-    function showPostCards() {
-      document.getElementById('post-cards').style.display = '';
-      document.getElementById('post-full').style.display = 'none';
-      document.getElementById('post-other').style.display = 'none';
-    }
-
-    const postCache = {};
-
-    function showPost(id) {
-      document.getElementById('post-cards').style.display = 'none';
-      document.getElementById('post-full').style.display = 'block';
-
-      function renderContent(html) {
-        document.getElementById('post-content-mount').innerHTML = html;
-        const otherCards = document.getElementById('post-other-cards');
-        otherCards.innerHTML = '';
-        Object.entries(POST_META).forEach(([postId, m]) => {
-          if (postId === id) return;
-          const el = document.createElement('article');
-          el.className = 'post-card';
-          el.dataset.post = postId;
-          el.innerHTML = (m.thumb ? `<img src="${m.thumb}" class="post-card-thumb" alt="" />` : '')
-            + `<div class="post-card-body">`
-            + `<span class="post-article-date">${m.date}</span>`
-            + `<h3 class="post-card-title">${m.title}</h3>`
-            + `<p class="post-card-excerpt">${m.excerpt}</p>`
-            + `<button class="post-card-btn">Read &rarr;</button>`
-            + `</div>`;
-          el.querySelector('.post-card-btn').addEventListener('click', () => showPost(postId));
-          el.querySelector('.post-card-title').addEventListener('click', () => showPost(postId));
-          otherCards.appendChild(el);
-        });
-        document.getElementById('post-other').style.display = 'block';
-        document.getElementById('posts').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-
-      if (postCache[id]) { renderContent(postCache[id]); return; }
-      document.getElementById('post-content-mount').innerHTML = '<p style="padding:2rem;opacity:.6">Loading…</p>';
-      fetch('posts/' + id + '.html')
-        .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
-        .then(rawHtml => {
-          // Extract only the <article> element from the standalone post file
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(rawHtml, 'text/html');
-          const article = doc.querySelector('article.post-article');
-          // Fix relative paths: ../images/ → images/ (post files use ../ relative to posts/)
-          let fragment = article ? article.outerHTML : rawHtml;
-          fragment = fragment.replace(/\.\.\/images\//g, 'images/');
-          postCache[id] = fragment;
-          renderContent(fragment);
-        })
-        .catch(() => { document.getElementById('post-content-mount').innerHTML = '<p style="padding:2rem">Could not load post.</p>'; });
-    }
-
-    // Card click handlers — navigate to posts.html anchored at the correct post
-    document.querySelectorAll('.post-card').forEach(card => {
-      const go = () => { window.location.href = 'posts.html#' + card.dataset.post; };
-      card.querySelector('.post-card-btn').addEventListener('click', go);
-      card.querySelector('.post-card-title').addEventListener('click', go);
-    });
-
-    // "All posts" back button
-    document.getElementById('post-back-btn').addEventListener('click', showPostCards);
-
-    // Posts tab click: always show cards
-    document.querySelector('.tab-link[data-tab="posts"]').addEventListener('click', () => {
-      showPostCards();
-    });
-
-    // Tag-post pills and title links (link from project card to Posts tab)
-    document.querySelectorAll('.tag-post[data-tab], .post-tab-link[data-tab]').forEach(pill => {
-      pill.addEventListener('click', e => {
-        e.preventDefault();
-        const target = pill.dataset.tab;
-        links.forEach(l => l.classList.remove('active'));
-        panels.forEach(p => p.classList.remove('active'));
-        document.querySelector('.tab-link[data-tab="' + target + '"]').classList.add('active');
-        document.getElementById(target).classList.add('active');
-        const postId = pill.dataset.post;
-        // Run after panel is visible so scrollIntoView works
-        requestAnimationFrame(() => {
-          if (postId) showPost(postId);
-          else showPostCards();
-        });
-      });
-    });
-
-    // Two-level project filter (Code AND Theme)
-    const projectCards = document.querySelectorAll('.project-card');
+    // ── Coding section two-level filter ─────────────────────────
+    const codingCards = document.querySelectorAll('.project-card');
     let activeCode = '', activeTheme = '';
 
     function applyFilters() {
-      projectCards.forEach(card => {
+      codingCards.forEach(card => {
         const tags = card.dataset.tags || '';
         const codeOk  = !activeCode  || tags.includes(activeCode);
         const themeOk = !activeTheme || tags.includes(activeTheme);
@@ -683,6 +582,22 @@
         applyFilters();
       });
     });
+
+    // ── Nav active-link tracking via IntersectionObserver ───────
+    const navLinks  = document.querySelectorAll('.nav-link');
+    const sections  = document.querySelectorAll('main section[id]');
+
+    const navObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          const hit = document.querySelector('.nav-link[href="#' + entry.target.id + '"]');
+          if (hit) hit.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-50px 0px -55% 0px', threshold: 0 });
+
+    sections.forEach(s => navObserver.observe(s));
   </script>
 
 </body>
