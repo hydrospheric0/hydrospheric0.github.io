@@ -2,62 +2,11 @@
 
 /* ── Posts (newest-first) ──────────────────────────────────────── */
 const POSTS = [
-  /*
   {
-    title: 'twitcher',
-    date: 'March 23, 2026',
-    href: 'posts/post-twitcher.html',
-    thumb: 'images/twitcher-thumbnail.png',
-    excerpt: 'Interactive tool for tracking eBird rarity and target-species sightings by region. Queries the eBird API to flag rare and unusual birds and renders occurrence maps for trip planning and local monitoring.'
-  },
-  {
-    title: 'ebird-rarity-mapper',
-    date: 'March 23, 2026',
-    href: 'posts/post-ebird-rarity-mapper.html',
-    thumb: null,
-    excerpt: 'Tools for mapping rare bird occurrence using eBird data.'
-  },
-  {
-    title: 'cbc-webtools',
-    date: 'March 23, 2026',
-    href: 'posts/post-cbc-webtools.html',
-    thumb: null,
-    excerpt: 'Web tools supporting Christmas Bird Count data workflows.'
-  },
-  {
-    title: 'cbc-weather',
-    date: 'March 23, 2026',
-    href: 'posts/post-cbc-weather.html',
-    thumb: null,
-    excerpt: 'CBC weather mapping tool \u2014 visualizes weather conditions recorded during Audubon Christmas Bird Counts.'
-  },
-  {
-    title: 'cbc-historic',
-    date: 'March 23, 2026',
-    href: 'posts/post-cbc-historic.html',
-    thumb: null,
-    excerpt: 'Tool for improving access to historical Christmas Bird Count data.'
-  },
-  {
-    title: 'CBC compiler',
-    date: 'March 23, 2026',
-    href: 'posts/post-cbc-compiler.html',
-    thumb: null,
-    excerpt: 'Automation scripts for compiling Audubon Christmas Bird Count data \u2014 merging field sheets, computing sector summaries, and generating formatted reports.'
-  },
-  {
-    title: 'cbc-capcplot',
-    date: 'March 23, 2026',
-    href: 'posts/post-cbc-capcplot.html',
-    thumb: null,
-    excerpt: 'Visualization tool for Christmas Bird Count data.'
-  },
-  */
-  {
-    title: 'Help complete the California Bird Atlas',
+    title: 'Supporting the California Bird Atlas',
     date: 'March 22, 2026',
     href: 'posts/post-calbirds-atlas.html',
-    thumb: 'images/calbirds-atlas-thumbnail.png',
+    thumb: 'images/atlas_small.png',
     excerpt: 'A small mobile web-app that shows your location relative to the California Breeding Bird Atlas grid and provides block coverage statistics.'
   },
   {
@@ -66,6 +15,33 @@ const POSTS = [
     href: 'posts/post-lifer.html',
     thumb: 'images/lifer-thumbnail.jpg',
     excerpt: 'Using eBird Status &amp; Trends occurrence data to generate animated weekly maps of potential life-list birds across the US.'
+  },
+  {
+    title: 'Twitcher',
+    date: 'March 14, 2026',
+    href: 'posts/post-twitcher.html',
+    thumb: 'images/twitcher-thumbnail.png',
+    excerpt: 'A mobile-first rarity finder that scans eBird reports across the continental US and filters by ABA rarity codes to help twitchers track down the most unusual birds.'
+  },
+  {
+    title: 'cbc-compiler',
+    date: 'March 10, 2026',
+    href: 'posts/post-cbc-compiler.html',
+    thumb: 'images/cbc-compiler-thumbnail.png',
+    excerpt: 'Automation scripts for compiling Audubon Christmas Bird Count data — merging field sheets, computing sector summaries, and generating formatted reports for submission.'  },
+  {
+    title: 'CBC CAPC plot',
+    date: 'March 1, 2026',
+    href: 'posts/post-cbc-capcplot.html',
+    thumb: 'images/cbc-capcplot-thumb.png',
+    excerpt: 'Interactive visualization tool for exploring long-term Christmas Bird Count species trends with trendline analysis and statistical summaries.'
+  },
+  {
+    title: 'CBC historic',
+    date: 'February 24, 2026',
+    href: 'posts/post-cbc-historic.html',
+    thumb: 'images/cbc-historic-thumb.png',
+    excerpt: 'Tool for improving access to historical Christmas Bird Count data — browse, search, and explore decades of CBC circle results.'
   }
 ];
 
@@ -73,29 +49,29 @@ const POSTS = [
 const CODING_PROJECTS = [
   {
     name: 'california-bird-atlas',
-    tags: ['My code', 'JavaScript', 'eBird', 'birds', 'maps'],
+    tags: ['My code', 'JavaScript', 'eBird', 'Birds', 'maps'],
     type: 'mine',
-    thumb: 'images/calbirds-atlas-thumbnail.png',
+    thumb: 'images/atlas_small.png',
     thumbAlt: 'CA Bird Atlas app',
     postHref: 'posts/post-calbirds-atlas.html',
     sourceHref: 'https://github.com/hydrospheric0/calbirds-atlas',
     webappHref: 'https://calbirds-atlas.pages.dev/',
-    description: 'Web-based app showing your location relative to the California Bird Atlas grid, with basic coverage statistics. Works in any mobile browser.'
+    description: 'Lightweight mobile-first Leaflet app that locates your position on the CA Breeding Bird Atlas block grid and color-codes blocks by survey coverage. Built with vanilla JS, Cloudflare Pages, and the eBird API.'
   },
   {
     name: 'twitcher',
-    tags: ['My code', 'JavaScript', 'eBird', 'rarities'],
+    tags: ['My code', 'JavaScript', 'eBird', 'Rarities', 'Birds'],
     type: 'mine',
     thumb: 'images/twitcher-thumbnail.png',
     thumbAlt: 'Twitcher screenshot',
     postHref: 'posts/post-twitcher.html',
     sourceHref: 'https://github.com/hydrospheric0/twitcher',
-    webappHref: null,
-    description: 'Interactive tool for tracking eBird rarity and target-species sightings by region. Queries the eBird API to flag rare and unusual birds and renders occurrence maps for trip planning and local monitoring.'
+    webappHref: 'https://twitcher.io',
+    description: 'Lightweight mobile-first Leaflet app that helps "twitchers"\u2014extreme bird chasers\u2014find rarities based on eBird reports across the entire continental US. Applies ABA rarity codes for filtering. Built with vanilla JS, Cloudflare Pages, and the eBird API.'
   },
   {
     name: 'lifeR',
-    tags: ['Fork', 'R', 'eBird', 'mapping'],
+    tags: ['Fork', 'R', 'eBird', 'mapping', 'Birds'],
     type: 'fork',
     thumb: 'images/lifer-thumbnail.jpg',
     thumbAlt: 'lifeR animated map',
@@ -105,38 +81,41 @@ const CODING_PROJECTS = [
     description: 'Create animated maps of missing lifer birds using eBird Status &amp; Trends occurrence data. Fork of <a href="https://github.com/smsfrn/lifeR" target="_blank" rel="noopener noreferrer">lifeR</a> by Samuel Safran.'
   },
   {
-    name: 'CBC compiler',
-    tags: ['My code', 'JavaScript', 'CBC'],
+    name: 'cbc-compiler',
+    tags: ['My code', 'JavaScript', 'CBC', 'Birds'],
     type: 'mine',
-    thumb: null,
-    postHref: null,
+    thumb: 'images/cbc-compiler-thumbnail.png',
+    thumbAlt: 'cbc-compiler screenshot',
+    postHref: 'posts/post-cbc-compiler.html',
     sourceHref: 'https://github.com/hydrospheric0/cbc-compiler',
-    webappHref: null,
+    webappHref: 'https://hydrospheric0.github.io/cbc-compiler/',
     description: 'Automation scripts for compiling Audubon Christmas Bird Count data \u2014 merging field sheets, computing sector summaries, and generating formatted reports for submission.'
   },
   {
     name: 'cbc-capcplot',
-    tags: ['My code', 'HTML', 'CBC'],
+    tags: ['My code', 'HTML', 'CBC', 'Birds'],
     type: 'mine',
-    thumb: null,
-    postHref: null,
+    thumb: 'images/cbc-capcplot-thumb.png',
+    thumbAlt: 'CBC CAPC plot example',
+    postHref: 'posts/post-cbc-capcplot.html',
     sourceHref: 'https://github.com/hydrospheric0/cbc-capcplot',
     webappHref: 'https://hydrospheric0.github.io/cbc-capcplot/',
     description: 'Visualization tool for Christmas Bird Count data.'
   },
   {
     name: 'cbc-historic',
-    tags: ['My code', 'JavaScript', 'CBC', 'birds'],
+    tags: ['My code', 'JavaScript', 'CBC', 'Birds'],
     type: 'mine',
-    thumb: null,
-    postHref: null,
+    thumb: 'images/cbc-historic-thumb.png',
+    thumbAlt: 'CBC historic data tool',
+    postHref: 'posts/post-cbc-historic.html',
     sourceHref: 'https://github.com/hydrospheric0/cbc-historic',
     webappHref: 'https://hydrospheric0.github.io/cbc-historic/',
     description: 'Tool for improving access to historical Christmas Bird Count data.'
   },
   {
     name: 'cbc-weather',
-    tags: ['My code', 'JavaScript', 'CBC', 'weather'],
+    tags: ['My code', 'JavaScript', 'CBC', 'weather', 'Birds'],
     type: 'mine',
     thumb: null,
     postHref: null,
@@ -145,14 +124,14 @@ const CODING_PROJECTS = [
     description: 'CBC weather mapping tool \u2014 visualizes weather conditions recorded during Audubon Christmas Bird Counts.'
   },
   {
-    name: 'cbc-webtools',
-    tags: ['My code', 'JavaScript', 'CBC'],
+    name: 'eBird-tripreport-csv',
+    tags: ['My code', 'JavaScript', 'eBird', 'Birds'],
     type: 'mine',
     thumb: null,
     postHref: null,
-    sourceHref: 'https://github.com/hydrospheric0/cbc-webtools',
+    sourceHref: 'https://github.com/hydrospheric0/ebird-tripreport-csv',
     webappHref: null,
-    description: 'Web tools supporting Christmas Bird Count data workflows.'
+    description: 'Browser extension for downloading your trip report as a CSV. Works best with Firefox but a preliminary Chrome extension is also provided.'
   }
 ];
 
@@ -163,12 +142,12 @@ function getProjectTagClass(tag) {
     JavaScript: 'tag tag--javascript',
     R: 'tag tag--r',
     HTML: 'tag tag--html',
-    birds: 'tag tag--theme',
+    Birds: 'tag tag--theme',
     CBC: 'tag tag--theme',
     eBird: 'tag tag--theme',
     maps: 'tag tag--theme',
     mapping: 'tag tag--theme',
-    rarities: 'tag tag--theme',
+    Rarities: 'tag tag--theme',
     weather: 'tag tag--theme'
   };
   return tagClasses[tag] || 'tag tag--theme';
@@ -181,9 +160,6 @@ function buildProjectCardHTML(proj) {
   const tagPills = proj.tags
     .filter(t => t !== 'My code' && t !== 'Fork')
     .map(t => `<span class="${getProjectTagClass(t)}">${t}</span>`).join('');
-  const webappHeaderTag = proj.webappHref
-    ? `<a href="${proj.webappHref}" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>`
-    : '';
   // Name element: For webapp-ready coding projects prefer linking via the tile name directly to the app
   const nameEl = proj.webappHref 
     ? `<a href="${proj.webappHref}" target="_blank" rel="noopener noreferrer" class="project-post-link">${proj.name}</a>`
@@ -202,17 +178,17 @@ function buildProjectCardHTML(proj) {
                 : `<img src="${proj.thumb}" alt="${proj.thumbAlt}" class="project-thumb" />`}
               <div class="project-body-text">
                 <p>${proj.description}</p>
-                <div class="project-tags">${linkTags}</div>
               </div>
-            </div>`
+            </div>
+            <div class="project-tags">${linkTags}</div>`
     : `<div class="project-body">
               <p>${proj.description}</p>
-              <div class="project-tags">${linkTags}</div>
-            </div>`;
+            </div>
+            <div class="project-tags">${linkTags}</div>`;
   return `        <div class="project-card" data-tags="${proj.tags.join(' ')}" data-name="${proj.name}" data-post-href="${proj.postHref || ''}">
           <div class="project-header">
             <span class="project-summary-name">${nameEl}</span>
-            <div class="project-summary-tags">${typePill}${tagPills}${webappHeaderTag}</div>
+            <div class="project-summary-tags">${typePill}${tagPills}</div>
           </div>
             ${body}
         </div>`;
