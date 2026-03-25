@@ -145,9 +145,9 @@
       if (!nav) return;
       var links = [];
       if (idx < POSTS.length - 1)
-        links.push('<a href="../' + POSTS[idx + 1].href + '">&laquo; Previous</a>');
+        links.push('<a href="../' + POSTS[idx + 1].href + '">Next &raquo;</a>');
       if (idx > 0)
-        links.push('<a href="../' + POSTS[idx - 1].href + '">Next &raquo;</a>');
+        links.push('<a href="../' + POSTS[idx - 1].href + '">&laquo; Previous</a>');
       nav.innerHTML = links.join('');
     })();
   </script>
