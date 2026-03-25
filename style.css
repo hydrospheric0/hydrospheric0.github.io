@@ -256,6 +256,7 @@ body {
 
 .position-card .project-header {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
   gap: 0.25rem 0.5rem;
