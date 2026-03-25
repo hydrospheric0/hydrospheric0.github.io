@@ -65,6 +65,7 @@
 
     <main class="content">
 
+      <h2>Posts <span class="post-nav-links" id="postNav"></span></h2>
       <section id="post">
         <div class="post-reading-col">
 <div class="post-container">
@@ -116,5 +117,21 @@
     </main>
   </div><!-- /.page-wrap -->
 
+  <script src="../data.js"></script>
+  <script>
+    (function() {
+      var file = location.pathname.split('/').pop();
+      var idx = POSTS.findIndex(function(p) { return p.href.endsWith(file); });
+      if (idx < 0) return;
+      var nav = document.getElementById('postNav');
+      if (!nav) return;
+      var links = [];
+      if (idx < POSTS.length - 1)
+        links.push('<a href="../' + POSTS[idx + 1].href + '">&laquo; Previous</a>');
+      if (idx > 0)
+        links.push('<a href="../' + POSTS[idx - 1].href + '">Next &raquo;</a>');
+      nav.innerHTML = links.join('');
+    })();
+  </script>
 </body>
 </html>
