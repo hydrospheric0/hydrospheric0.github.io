@@ -3,6 +3,13 @@
 /* ── Posts (newest-first) ──────────────────────────────────────── */
 const POSTS = [
   {
+    title: 'PyLifer + Hotspots',
+    date: 'March 25, 2026',
+    href: 'posts/post-pylifer.html',
+    thumb: 'images/pylifer-thumbnail.jpg',
+    excerpt: 'A Python port of lifeR with 3 km low-resolution animations showing potential lifers across the US and a regional view.'
+  },
+  {
     title: 'Supporting the California Bird Atlas',
     date: 'March 22, 2026',
     href: 'posts/post-calbirds-atlas.html',
@@ -48,6 +55,17 @@ const POSTS = [
 /* ── Coding projects ──────────────────────────────────────────── */
 const CODING_PROJECTS = [
   {
+    name: 'PyLifer + Hotspots',
+    tags: ['My code', 'Python', 'eBird', 'mapping', 'Birds'],
+    type: 'mine',
+    thumb: 'images/pylifer-thumbnail.jpg',
+    thumbAlt: 'PyLifer 3 km map thumbnail',
+    postHref: 'posts/post-pylifer.html',
+    sourceHref: 'https://github.com/hydrospheric0/PyLifer',
+    webappHref: null,
+    description: 'Python implementation of lifeR that generates animated personal lifer maps from eBird Status &amp; Trends occurrence data.'
+  },
+  {
     name: 'california-bird-atlas',
     tags: ['My code', 'JavaScript', 'eBird', 'Birds', 'maps'],
     type: 'mine',
@@ -59,17 +77,6 @@ const CODING_PROJECTS = [
     description: 'Lightweight mobile-first Leaflet app that locates your position on the CA Breeding Bird Atlas block grid and color-codes blocks by survey coverage. Built with vanilla JS, Cloudflare Pages, and the eBird API.'
   },
   {
-    name: 'twitcher',
-    tags: ['My code', 'JavaScript', 'eBird', 'Rarities', 'Birds'],
-    type: 'mine',
-    thumb: 'images/twitcher-thumbnail.png',
-    thumbAlt: 'Twitcher screenshot',
-    postHref: 'posts/post-twitcher.html',
-    sourceHref: 'https://github.com/hydrospheric0/twitcher',
-    webappHref: 'https://twitcher.io',
-    description: 'Lightweight mobile-first Leaflet app that helps "twitchers"\u2014extreme bird chasers\u2014find rarities based on eBird reports across the entire continental US. Applies ABA rarity codes for filtering. Built with vanilla JS, Cloudflare Pages, and the eBird API.'
-  },
-  {
     name: 'lifeR',
     tags: ['Fork', 'R', 'eBird', 'mapping', 'Birds'],
     type: 'fork',
@@ -79,6 +86,17 @@ const CODING_PROJECTS = [
     sourceHref: 'https://github.com/hydrospheric0/lifeR',
     webappHref: null,
     description: 'Create animated maps of missing lifer birds using eBird Status &amp; Trends occurrence data. Fork of <a href="https://github.com/smsfrn/lifeR" target="_blank" rel="noopener noreferrer">lifeR</a> by Samuel Safran.'
+  },
+  {
+    name: 'twitcher',
+    tags: ['My code', 'JavaScript', 'eBird', 'Rarities', 'Birds'],
+    type: 'mine',
+    thumb: 'images/twitcher-thumbnail.png',
+    thumbAlt: 'Twitcher screenshot',
+    postHref: 'posts/post-twitcher.html',
+    sourceHref: 'https://github.com/hydrospheric0/twitcher',
+    webappHref: 'https://twitcher.io',
+    description: 'Lightweight mobile-first Leaflet app that helps "twitchers"\u2014extreme bird chasers\u2014find rarities based on eBird reports across the entire continental US. Applies ABA rarity codes for filtering. Built with vanilla JS, Cloudflare Pages, and the eBird API.'
   },
   {
     name: 'cbc-compiler',
@@ -140,6 +158,7 @@ const CODING_PROJECTS = [
 function getProjectTagClass(tag) {
   const tagClasses = {
     JavaScript: 'tag tag--javascript',
+    Python: 'tag tag--python',
     R: 'tag tag--r',
     HTML: 'tag tag--html',
     Birds: 'tag tag--theme',

@@ -8,14 +8,14 @@ html { font-size: 19px; scrollbar-gutter: stable; }
   --bar-bg:    #2d3748;
   --bar-fg:    #e2e8f0;
   --accent:    #4a9eff;
-  --text:      #2d3748;
-  --muted:     #718096;
+  --text:      #15181d;
+  --muted:     #3f4752;
   --border:    #e2e8f0;
   --card-bg:   #ffffff;
   --tag-bg:    #ebf4ff;
   --tag-fg:    #2b6cb0;
   --sidebar-w: 260px;
-  --font:      "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font:      "Atkinson Hyperlegible", "Segoe UI", Verdana, Tahoma, Arial, sans-serif;
 }
 
 body {
@@ -31,7 +31,8 @@ body {
 .skip-link {
   position: absolute;
   left: 0.75rem;
-  top: -40px;
+  top: 0.5rem;
+  transform: translateY(-200%);
   background: #1a202c;
   color: #fff;
   padding: 0.5rem 0.75rem;
@@ -41,7 +42,7 @@ body {
 }
 
 .skip-link:focus {
-  top: 0.5rem;
+  transform: translateY(0);
 }
 
 a:focus-visible,
@@ -97,6 +98,8 @@ button:focus-visible {
 
 /* ── Sidebar ──────────────────────────────────────────────────── */
 .sidebar {
+  --text: #2d3748;
+  --muted: #718096;
   width: var(--sidebar-w);
   flex-shrink: 0;
   padding: 2rem 1.25rem 2rem 1.5rem;
@@ -467,6 +470,11 @@ button:focus-visible {
 .tag--r {
   background: rgba(25, 118, 210, 0.12);
   color: #245a9b;
+}
+
+.tag--python {
+  background: rgba(53, 114, 165, 0.15);
+  color: #1f4f78;
 }
 
 .tag--html {
