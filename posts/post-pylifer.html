@@ -16,12 +16,11 @@
   <link rel="stylesheet" href="../style.css" />
   <style>
     .pylifer-gallery {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 0.8rem;
       max-width: 752px;
       margin: 1.2rem auto;
-      overflow-x: auto;
-      padding-bottom: 0.2rem;
     }
 
     .pylifer-gallery-item {
@@ -30,9 +29,21 @@
       padding: 0;
       margin: 0;
       cursor: zoom-in;
-      flex: 0 0 calc((100% - 1.6rem) / 3);
-      min-width: 220px;
+      min-width: 0;
       text-align: left;
+    }
+
+    @media (max-width: 760px) {
+      .pylifer-gallery {
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 0.2rem;
+      }
+
+      .pylifer-gallery-item {
+        flex: 0 0 calc((100% - 1.6rem) / 3);
+        min-width: 220px;
+      }
     }
 
     .pylifer-gallery-item img {
@@ -40,7 +51,6 @@
       height: 220px;
       object-fit: contain;
       object-position: center;
-      background: #ffffff;
       border-radius: 6px;
       display: block;
     }
@@ -93,41 +103,50 @@
 
     .pylifer-compare {
       margin-top: 1.2rem;
+      border: 1px solid #cfd8e3;
+      background: #f8fbff;
+      border-radius: 8px;
+      padding: 0.75rem 0.85rem;
+    }
+
+    .pylifer-compare p {
+      font-size: 0.66rem;
+      line-height: 1.35;
     }
 
     .pylifer-compare-table {
       width: 80%;
       border-collapse: collapse;
       margin: 0.5rem auto 0;
-      font-size: 0.72rem;
+      font-size: 0.58rem;
     }
 
     .pylifer-compare-table th,
     .pylifer-compare-table td {
       border: 1px solid var(--border);
-      padding: 0.45rem 0.55rem;
+      padding: 0.3rem 0.35rem;
       text-align: left;
       vertical-align: top;
     }
 
     .pylifer-compare-table th {
-      background: #f5f8fc;
-      color: var(--text);
+      background: #0b2e6b;
+      color: #ffffff;
       font-weight: 600;
     }
 
     .pylifer-compare-note {
       margin-top: 0.45rem;
-      font-size: 0.78rem;
+      font-size: 0.58rem;
       color: var(--muted);
     }
 
     .pylifer-compare-table tbody tr.scale-a td {
-      background: #f5f7fa;
+      background: #ffffff;
     }
 
     .pylifer-compare-table tbody tr.scale-b td {
-      background: #edf4ff;
+      background: #d7e7ff;
     }
   </style>
 </head>
@@ -216,7 +235,7 @@
         <button
           type="button"
           class="pylifer-gallery-item"
-          data-full-src="../images/pylifer-us-3km-lores.gif"
+          data-full-src="../images/pylifer-us-3km-hires.gif"
           data-caption="US (3km) - I should visit Texas and Florida, especially in spring"
           aria-label="Open US 3 km animation"
         >
@@ -225,7 +244,7 @@
         <button
           type="button"
           class="pylifer-gallery-item"
-          data-full-src="../images/pylifer-regional-3km-lores.gif"
+          data-full-src="../images/pylifer-regional-3km-hires.gif"
           data-caption="US-CA (3km) - the desert region, especially San Bernardino seem prime areas to bird for me"
           aria-label="Open US-CA 3 km animation"
         >
@@ -234,8 +253,8 @@
         <button
           type="button"
           class="pylifer-gallery-item"
-          data-full-src="../images/pylifer-nl-3km-lores.gif"
-          data-caption="NL (3kM) - Zeeland (SW), the Wadden (NE), and Limburg (S) are must vist places"
+          data-full-src="../images/pylifer-nl-3km-hires.gif"
+          data-caption="NL (3km) - Zeeland (SW), the Wadden (NE), and Limburg (S) are must visit places"
           aria-label="Open NL 3 km animation"
         >
           <img src="../images/pylifer-nl-3km-lores.gif" alt="PyLifer 3 km animated map for NL" />
@@ -249,11 +268,47 @@
         </div>
       </div>
 
+      <p>
+        As the maps show, I still have a lot of opportunities to add lifers in all three regions.
+      </p>
+
+      <div class="pylifer-compare" style="max-width:80%;margin:0.8rem auto;">
+        <p><strong>Regional stats</strong> (eBird data as of March 27, 2026 &mdash; 3 km):</p>
+        <table class="pylifer-compare-table" style="width:100%;">
+          <thead>
+            <tr>
+              <th scope="col">Region</th>
+              <th scope="col">Life birds seen</th>
+              <th scope="col">Potential lifers mapped</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="scale-a"><td>US</td><td>702</td><td>559</td></tr>
+            <tr class="scale-b"><td>California (US-CA)</td><td>538</td><td>345</td></tr>
+            <tr class="scale-a"><td>Netherlands (NL)</td><td>165</td><td>268</td></tr>
+          </tbody>
+        </table>
+        <p class="pylifer-compare-note">Total world life list: <strong>990 species</strong>. &ldquo;Potential lifers mapped&rdquo; = species not yet seen in that region that have eBird Status &amp; Trends 3 km occurrence data.</p>
+      </div>
+
+      <p>
+        The current adaptation of <strong>PyLifer</strong> was rewritten in Python. Below is a summary table of the
+        benchmark differences between the new code and the original <strong>lifeR</strong> code.
+      </p>
+      <p>
+        Benchmarks run on Linux with harmonized settings across R and Python. Both implementations were launched with
+        the same benchmark profile (40 workers, 20 cores), and had a 192 GB memory guard enabled. Measured peak memory
+        at 3 km was about 30.2 GB for PyLifer and 20.1 GB for lifeR.
+      </p>
+      <p>
+        <strong>Why is lifeR slower at 3 km?</strong> The main bottleneck is raster accumulation. In this benchmark,
+        Python finished accumulation in about 175 s, while R needed about 915 s. Both complete reprojection and frame
+        rendering quickly, so the runtime gap is driven mostly by accumulation-stage memory and process overhead in R
+        at high resolution.
+      </p>
+
       <div class="pylifer-compare">
-        <p>
-          The current adaptation of lifeR was rewritten in <strong>Python</strong>. Below is a summary table of the
-          benchmark differences between the two code bases.
-        </p>
+        <p><strong>Computational stats</strong> &mdash; R code versus Python code:</p>
         <table class="pylifer-compare-table">
           <thead>
             <tr>
@@ -268,50 +323,47 @@
             <tr class="scale-a">
               <td>3 km</td>
               <td>lifeR</td>
-              <td>☠️</td>
-              <td>&gt;256 GB ☠️</td>
-              <td>☠️</td>
+              <td>16:15.17</td>
+              <td>20.1 MB</td>
+              <td>-</td>
             </tr>
             <tr class="scale-a">
               <td></td>
               <td>PyLifer</td>
-              <td>2:24</td>
-              <td>27.1 GB</td>
-              <td>Completes (lifeR crashes)</td>
+              <td>3:10.22</td>
+              <td>30.2 MB</td>
+              <td>~5.13x faster, ~1.51x more RAM</td>
             </tr>
             <tr class="scale-b">
               <td>9 km</td>
               <td>lifeR</td>
-              <td>6:10</td>
-              <td>57.4 GB</td>
+              <td>2:31.92</td>
+              <td>4.3 MB</td>
               <td>-</td>
             </tr>
             <tr class="scale-b">
               <td></td>
               <td>PyLifer</td>
-              <td>0:30</td>
-              <td>4.9 GB</td>
-              <td>~12.2x faster, ~11.7x less RAM</td>
+              <td>0:39.13</td>
+              <td>5.6 MB</td>
+              <td>~3.87x faster, ~1.30x more RAM</td>
             </tr>
             <tr class="scale-a">
               <td>27 km</td>
               <td>lifeR</td>
-              <td>2:26</td>
-              <td>8.1 GB</td>
+              <td>1:20.90</td>
+              <td>3.1 MB</td>
               <td>-</td>
             </tr>
             <tr class="scale-a">
               <td></td>
               <td>PyLifer</td>
-              <td>0:39</td>
-              <td>1.6 GB</td>
-              <td>~3.7x faster, ~5x less RAM</td>
+              <td>0:24.05</td>
+              <td>2.0 MB</td>
+              <td>~3.33x faster, ~1.52x less RAM</td>
             </tr>
           </tbody>
         </table>
-        <p class="pylifer-compare-note">
-          Benchmarks run on a Linux machine with data already downloaded. eBird S&amp;T versions differ in one run (R: 2022, Python: 2023 at 27 km).
-        </p>
       </div>
 
       <div class="post-meta-bar">
