@@ -344,6 +344,19 @@ button:focus-visible {
 
 .project-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
 
+.coding-support-card {
+  margin-top: 0;
+}
+
+.coding-support-card ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.coding-support-card li {
+  margin: 0.2rem 0;
+}
+
 #codingCardsContainer,
 #indexProjectCards,
 #postCardsContainer,
