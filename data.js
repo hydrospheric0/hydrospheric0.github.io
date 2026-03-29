@@ -3,7 +3,7 @@
 /* ── Posts (newest-first) ──────────────────────────────────────── */
 const POSTS = [
   {
-    title: 'PyLifer + Hotspots',
+    title: 'PyLifer: Mapping my lifers with Python',
     date: 'March 25, 2026',
     href: 'posts/post-pylifer.html',
     thumb: 'images/pylifer-thumbnail.jpg',
@@ -55,7 +55,7 @@ const POSTS = [
 /* ── Coding projects ──────────────────────────────────────────── */
 const CODING_PROJECTS = [
   {
-    name: 'PyLifer + Hotspots',
+    name: 'PyLifer: Mapping my lifers with Python',
     tags: ['My code', 'Python', 'eBird', 'mapping', 'Birds'],
     type: 'mine',
     thumb: 'images/pylifer-thumbnail.jpg',
