@@ -37,7 +37,7 @@
       <img src="images/photo.jpg" alt="Northern Pygmy-Owl, Putah Creek CA" class="avatar" />
 
       <h1 class="name">Bart (A.J.) Wickel</h1>
-      <p class="tagline">Earth Scientist</p>
+      <p class="tagline">Earth Scientist / Data Scientist</p>
       <p class="affiliation">Remote Sensing &amp; GIS &middot; Ecohydrology &middot; Climate Adaptation &middot; Wetland Science &middot; Bird Conservation and Research</p>
 
       <div class="social-links">
@@ -78,6 +78,13 @@
 
       <section id="coding">
         <h2>Bird Code</h2>
+        <p class="section-note">GitHub projects &mdash; <a href="https://github.com/hydrospheric0" target="_blank" rel="noopener noreferrer">github.com/hydrospheric0</a></p>
+        <p class="section-note">
+          This body of work is entirely self-funded.<br />
+          Consider supporting <a href="https://ebird.org/news/monthlygiving" target="_blank" rel="noopener noreferrer">eBird</a><br />
+          Consider supporting <a href="https://donorbox.org/california-bird-atlas" target="_blank" rel="noopener noreferrer">California Bird Atlas</a><br />
+          Consider supporting <a href="https://buymeacoffee.com/bartg" target="_blank" rel="noopener noreferrer">MetoliusResearch</a>
+        </p>
 
         <div class="filter-group">
           <span class="filter-label">Code</span>
@@ -86,7 +93,6 @@
             <button class="project-pill" data-group="code" data-filter="My code">My code</button>
             <button class="project-pill fork-pill" data-group="code" data-filter="Fork">Fork</button>
             <button class="project-pill" data-group="code" data-filter="JavaScript">JavaScript</button>
-            <button class="project-pill" data-group="code" data-filter="Python">Python</button>
             <button class="project-pill" data-group="code" data-filter="R">R</button>
             <button class="project-pill" data-group="code" data-filter="HTML">HTML</button>
           </div>
@@ -107,17 +113,6 @@
 
         <div id="codingCardsContainer"></div>
 
-        <div class="project-card coding-support-card" id="codingSupportCard">
-          <h3>Support</h3>
-          <p>This body of work is entirely self-funded.</p>
-          <p>Consider supporting:</p>
-          <ul>
-            <li><a href="https://buymeacoffee.com/bartg" target="_blank" rel="noopener noreferrer">MetoliusResearch</a></li>
-            <li><a href="https://ebird.org/news/monthlygiving" target="_blank" rel="noopener noreferrer">eBird</a></li>
-            <li><a href="https://donorbox.org/california-bird-atlas" target="_blank" rel="noopener noreferrer">California Bird Atlas</a></li>
-          </ul>
-        </div>
-
       </section>
 
     </main>
@@ -131,11 +126,6 @@
     Array.from(codingContainer.querySelectorAll('.project-card')).forEach((card, index) => {
       card.dataset.order = String(index);
     });
-    const supportCard = document.getElementById('codingSupportCard');
-    if (supportCard) {
-      supportCard.dataset.order = '9999';
-      codingContainer.appendChild(supportCard);
-    }
 
     function restoreOriginalOrder() {
       const cards = Array.from(codingContainer.querySelectorAll('.project-card'));
@@ -180,10 +170,6 @@
 
     function applyFilters() {
       document.querySelectorAll('#codingCardsContainer .project-card').forEach(card => {
-        if (card.classList.contains('coding-support-card')) {
-          card.style.display = '';
-          return;
-        }
         const tags = card.dataset.tags || '';
         const codeOk  = !activeCode  || tags.includes(activeCode);
         const themeOk = !activeTheme || tags.includes(activeTheme);
