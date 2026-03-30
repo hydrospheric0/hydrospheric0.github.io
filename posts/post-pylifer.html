@@ -161,7 +161,7 @@
     <aside class="sidebar">
       <img src="../images/photo.jpg" alt="Northern Pygmy-Owl, Putah Creek CA" class="avatar" />
 
-      <h1 class="name">Bart (A.J.) Wickel</h1>
+      <h1 class="name">Bart (A.J.) Wickel, PhD</h1>
       <p class="tagline">Earth Scientist / Data Scientist</p>
       <p class="affiliation">Remote Sensing &amp; GIS &middot; Ecohydrology &middot; Climate Adaptation &middot; Wetland Science &middot; Bird Conservation and Research</p>
 
@@ -289,71 +289,63 @@
         benchmark differences between the new code and the original <strong>lifeR</strong> code.
       </p>
       <p>
-        Benchmarks run on Linux with harmonized settings across R and Python. Both implementations were launched with
-        the same benchmark profile (40 workers, 20 cores), and had a 192 GB memory guard enabled. Measured peak memory
-        at 3 km was about 30.2 GB for PyLifer and 20.1 GB for lifeR.
-      </p>
-      <p>
-        <strong>Why is lifeR slower at 3 km?</strong> The main bottleneck is raster accumulation. In this benchmark,
-        Python finished accumulation in about 175 s, while R needed about 915 s. Both complete reprojection and frame
-        rendering quickly, so the runtime gap is driven mostly by accumulation-stage memory and process overhead in R
-        at high resolution.
+        Benchmarks run on Linux at 3 km resolution with harmonized settings (48-core, NVMe, warm cache).
+        PyLifer completes in 2:14 wall time vs 6:27 for lifeR &mdash; a 2.9&times; speedup. R uses 8&times; less RAM
+        (3.3 GB vs 25.4 GB), a deliberate trade-off: lifeR streams species one at a time while PyLifer batch-loads
+        a pre-filtered stack. The two largest fixable bottlenecks in lifeR are accumulation (no negative-result cache
+        means 344 below-threshold species are re-read from TIF on every warm run) and reprojection (52 serial
+        <code>terra::project</code> calls vs a single batched rasterio warp in Python). Render time reflects
+        structural ggplot2/tidyterra overhead (~3.2 s/frame vs ~0.065 s/frame for matplotlib) and is difficult
+        to improve without changing the render engine.
       </p>
 
       <div class="pylifer-compare">
-        <p><strong>Computational stats</strong> &mdash; R code versus Python code:</p>
+        <p><strong>Computational stats</strong> &mdash; phase breakdown at 3 km (warm cache, 48-core, NVMe):</p>
         <table class="pylifer-compare-table">
           <thead>
             <tr>
-              <th scope="col">Scale</th>
-              <th scope="col">Code base</th>
-              <th scope="col">Time to complete</th>
-              <th scope="col">RAM</th>
-              <th scope="col">Speed / Memory Delta</th>
+              <th scope="col">Phase</th>
+              <th scope="col">lifeR (R)</th>
+              <th scope="col">PyLifer (Py)</th>
+              <th scope="col">Ratio</th>
             </tr>
           </thead>
           <tbody>
             <tr class="scale-a">
-              <td>3 km</td>
-              <td>lifeR</td>
-              <td>16:15.17</td>
-              <td>20.1 MB</td>
-              <td>-</td>
-            </tr>
-            <tr class="scale-a">
-              <td></td>
-              <td>PyLifer</td>
-              <td>3:10.22</td>
-              <td>30.2 MB</td>
-              <td>~5.13x faster, ~1.51x more RAM</td>
+              <td>Accumulation</td>
+              <td>144.7 s</td>
+              <td>80.2 s</td>
+              <td>1.8&times;</td>
             </tr>
             <tr class="scale-b">
-              <td>9 km</td>
-              <td>lifeR</td>
-              <td>2:31.92</td>
-              <td>4.3 MB</td>
-              <td>-</td>
+              <td>Reprojection</td>
+              <td>53.5 s</td>
+              <td>1.1 s</td>
+              <td>49&times;</td>
+            </tr>
+            <tr class="scale-a">
+              <td>Render</td>
+              <td>165.0 s</td>
+              <td>3.4 s</td>
+              <td>49&times;</td>
             </tr>
             <tr class="scale-b">
-              <td></td>
-              <td>PyLifer</td>
-              <td>0:39.13</td>
-              <td>5.6 MB</td>
-              <td>~3.87x faster, ~1.30x more RAM</td>
+              <td>GIF assembly</td>
+              <td>6.1 s</td>
+              <td>4.1 s</td>
+              <td>1.5&times;</td>
             </tr>
-            <tr class="scale-a">
-              <td>27 km</td>
-              <td>lifeR</td>
-              <td>1:20.90</td>
-              <td>3.1 MB</td>
-              <td>-</td>
+            <tr class="scale-a" style="font-weight:600;">
+              <td>Wall total</td>
+              <td>6:27</td>
+              <td>2:14</td>
+              <td>2.9&times;</td>
             </tr>
-            <tr class="scale-a">
-              <td></td>
-              <td>PyLifer</td>
-              <td>0:24.05</td>
-              <td>2.0 MB</td>
-              <td>~3.33x faster, ~1.52x less RAM</td>
+            <tr class="scale-b" style="font-weight:600;">
+              <td>Peak RSS</td>
+              <td>3.3 GB</td>
+              <td>25.4 GB</td>
+              <td>0.13&times; <em>(R wins)</em></td>
             </tr>
           </tbody>
         </table>
