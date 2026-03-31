@@ -134,13 +134,21 @@
       color: var(--muted);
     }
 
-    .pylifer-compare-table tbody tr.scale-a td {
+    .pylifer-compare-table th.col-topleft {
       background: #ffffff;
+      color: #333;
     }
 
-    .pylifer-compare-table tbody tr.scale-b td {
-      background: #d7e7ff;
-    }
+    .pylifer-compare-table th.col-sub-orig,
+    .pylifer-compare-table td.col-orig { background: #f4f6fb; }
+
+    .pylifer-compare-table th.col-sub-opt,
+    .pylifer-compare-table td.col-opt  { background: #d7e7ff; }
+
+    .pylifer-compare-table th.col-sub-py,
+    .pylifer-compare-table td.col-py   { background: #e2f4e2; }
+
+    .pylifer-compare-table td.col-rowlabel { background: #ffffff; }
   </style>
 </head>
 <body>
@@ -300,47 +308,47 @@
         <table class="pylifer-compare-table">
           <thead>
             <tr>
-              <th scope="col" rowspan="2"></th>
+              <th scope="col" rowspan="2" class="col-topleft"></th>
               <th scope="colgroup" colspan="3" style="text-align:center;">Original lifeR (R)</th>
               <th scope="colgroup" colspan="3" style="text-align:center;">Optimised lifeR (R)</th>
               <th scope="colgroup" colspan="3" style="text-align:center;">PyLifer (Python)</th>
             </tr>
             <tr>
-              <th scope="col">27 km</th>
-              <th scope="col">9 km</th>
-              <th scope="col">3 km</th>
-              <th scope="col">27 km</th>
-              <th scope="col">9 km</th>
-              <th scope="col">3 km</th>
-              <th scope="col">27 km</th>
-              <th scope="col">9 km</th>
-              <th scope="col">3 km</th>
+              <th scope="col" class="col-sub-orig">27 km</th>
+              <th scope="col" class="col-sub-orig">9 km</th>
+              <th scope="col" class="col-sub-orig">3 km</th>
+              <th scope="col" class="col-sub-opt">27 km</th>
+              <th scope="col" class="col-sub-opt">9 km</th>
+              <th scope="col" class="col-sub-opt">3 km</th>
+              <th scope="col" class="col-sub-py">27 km</th>
+              <th scope="col" class="col-sub-py">9 km</th>
+              <th scope="col" class="col-sub-py">3 km</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="scale-a">
-              <td><strong>Wall</strong></td>
-              <td>1m 59s</td>
-              <td>6m 28s</td>
-              <td>&#x1F480;</td>
-              <td>1m 23s</td>
-              <td>5m 42s</td>
-              <td>40m 46s</td>
-              <td>0m 15s</td>
-              <td>0m 26s</td>
-              <td>2m 43s</td>
+            <tr>
+              <td class="col-rowlabel"><strong>Wall</strong></td>
+              <td class="col-orig">1m 59s</td>
+              <td class="col-orig">6m 28s</td>
+              <td class="col-orig">&#x1F480;</td>
+              <td class="col-opt">1m 23s</td>
+              <td class="col-opt">5m 42s</td>
+              <td class="col-opt">40m 46s</td>
+              <td class="col-py">0m 15s</td>
+              <td class="col-py">0m 26s</td>
+              <td class="col-py">2m 43s</td>
             </tr>
-            <tr class="scale-b">
-              <td><strong>Peak RSS</strong></td>
-              <td>8.1 GB</td>
-              <td>63.6 GB</td>
-              <td>&#x1F480;</td>
-              <td>1.4 GB</td>
-              <td>1.6 GB</td>
-              <td>6.6 GB</td>
-              <td>1.9 GB</td>
-              <td>5.1 GB</td>
-              <td>24.4 GB</td>
+            <tr>
+              <td class="col-rowlabel"><strong>Peak RSS</strong></td>
+              <td class="col-orig">8.1 GB</td>
+              <td class="col-orig">63.6 GB</td>
+              <td class="col-orig">&#x1F480;</td>
+              <td class="col-opt">1.4 GB</td>
+              <td class="col-opt">1.6 GB</td>
+              <td class="col-opt">6.6 GB</td>
+              <td class="col-py">1.9 GB</td>
+              <td class="col-py">5.1 GB</td>
+              <td class="col-py">24.4 GB</td>
             </tr>
           </tbody>
         </table>
