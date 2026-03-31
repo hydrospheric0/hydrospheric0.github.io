@@ -290,10 +290,9 @@
       </p>
       <p>
         Cold-run benchmarks on Linux (48-core, NVMe). Three codebases compared: the original lifeR (R), an
-        optimised lifeR build, and PyLifer (Python). At 3 km the optimised R build cuts peak RAM from 63.6 GB
-        to 6.6 GB; PyLifer runs in 2:43 at the cost of 24.4 GB. At every resolution PyLifer is fastest on wall
-        time while optimised lifeR uses the least memory. The accumulation bottleneck dominates R at higher
-        resolutions; PyLifer’s preprocessed &amp; cached stack keeps accumulation under 71 s even at 3 km.
+        optimised lifeR build, and PyLifer (Python). At 3 km the original lifeR OOM&#8217;d; the optimised R
+        build completes in 40m 46s at 6.6 GB peak RAM; PyLifer finishes in 2m 43s at 24.4 GB. At every
+        resolution PyLifer is the fastest on wall time.
       </p>
 
       <div class="pylifer-compare">
@@ -301,87 +300,47 @@
         <table class="pylifer-compare-table">
           <thead>
             <tr>
-              <th scope="col">Script / Res</th>
-              <th scope="col">Wall</th>
-              <th scope="col">Peak RSS</th>
-              <th scope="col">Preprocess</th>
-              <th scope="col">Accum</th>
-              <th scope="col">Render + GIF</th>
+              <th scope="col" rowspan="2"></th>
+              <th scope="colgroup" colspan="3" style="text-align:center;">Original lifeR (R)</th>
+              <th scope="colgroup" colspan="3" style="text-align:center;">Optimised lifeR (R)</th>
+              <th scope="colgroup" colspan="3" style="text-align:center;">PyLifer (Python)</th>
+            </tr>
+            <tr>
+              <th scope="col">27 km</th>
+              <th scope="col">9 km</th>
+              <th scope="col">3 km</th>
+              <th scope="col">27 km</th>
+              <th scope="col">9 km</th>
+              <th scope="col">3 km</th>
+              <th scope="col">27 km</th>
+              <th scope="col">9 km</th>
+              <th scope="col">3 km</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="scale-b" style="font-style:italic;color:#555;">
-              <td colspan="6">Original lifeR (R)</td>
-            </tr>
-            <tr class="scale-b">
-              <td>27 km</td>
+            <tr class="scale-a">
+              <td><strong>Wall</strong></td>
               <td>1m 59s</td>
-              <td>8.1 GB</td>
-              <td>&mdash;</td>
-              <td>&mdash;</td>
-              <td>&mdash;</td>
-            </tr>
-            <tr class="scale-b">
-              <td>9 km</td>
               <td>6m 28s</td>
-              <td>63.6 GB</td>
-              <td>&mdash;</td>
-              <td>&mdash;</td>
-              <td>&mdash;</td>
-            </tr>
-            <tr class="scale-a" style="font-style:italic;color:#555;">
-              <td colspan="6">Optimised lifeR (R)</td>
-            </tr>
-            <tr class="scale-a">
-              <td>27 km</td>
+              <td>&#x1F480;</td>
               <td>1m 23s</td>
-              <td>1.4 GB</td>
-              <td>(in accum)</td>
-              <td>144.7 s</td>
-              <td>~18 s</td>
-            </tr>
-            <tr class="scale-a">
-              <td>9 km</td>
               <td>5m 42s</td>
-              <td>1.6 GB</td>
-              <td>(in accum)</td>
-              <td>281.2 s</td>
-              <td>~38 s</td>
-            </tr>
-            <tr class="scale-a">
-              <td>3 km</td>
               <td>40m 46s</td>
-              <td>6.6 GB</td>
-              <td>(in accum)</td>
-              <td>2206.1 s</td>
-              <td>~175 s</td>
-            </tr>
-            <tr class="scale-b" style="font-style:italic;color:#555;">
-              <td colspan="6">PyLifer (Python)</td>
-            </tr>
-            <tr class="scale-b">
-              <td>27 km</td>
               <td>0m 15s</td>
-              <td>1.9 GB</td>
-              <td>7.3 s</td>
-              <td>0.3 s</td>
-              <td>~6 s</td>
-            </tr>
-            <tr class="scale-b">
-              <td>9 km</td>
               <td>0m 26s</td>
-              <td>5.1 GB</td>
-              <td>14.3 s</td>
-              <td>4.6 s</td>
-              <td>~7 s</td>
+              <td>2m 43s</td>
             </tr>
             <tr class="scale-b">
-              <td>3 km</td>
-              <td>2m 43s</td>
+              <td><strong>Peak RSS</strong></td>
+              <td>8.1 GB</td>
+              <td>63.6 GB</td>
+              <td>&#x1F480;</td>
+              <td>1.4 GB</td>
+              <td>1.6 GB</td>
+              <td>6.6 GB</td>
+              <td>1.9 GB</td>
+              <td>5.1 GB</td>
               <td>24.4 GB</td>
-              <td>83 s</td>
-              <td>70.7 s</td>
-              <td>~8 s</td>
             </tr>
           </tbody>
         </table>
