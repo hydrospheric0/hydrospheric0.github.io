@@ -289,63 +289,99 @@
         benchmark differences between the new code and the original <strong>lifeR</strong> code.
       </p>
       <p>
-        Benchmarks run on Linux at 3 km resolution with harmonized settings (48-core, NVMe, warm cache).
-        PyLifer completes in 2:14 wall time vs 6:27 for lifeR &mdash; a 2.9&times; speedup. R uses 8&times; less RAM
-        (3.3 GB vs 25.4 GB), a deliberate trade-off: lifeR streams species one at a time while PyLifer batch-loads
-        a pre-filtered stack. The two largest fixable bottlenecks in lifeR are accumulation (no negative-result cache
-        means 344 below-threshold species are re-read from TIF on every warm run) and reprojection (52 serial
-        <code>terra::project</code> calls vs a single batched rasterio warp in Python). Render time reflects
-        structural ggplot2/tidyterra overhead (~3.2 s/frame vs ~0.065 s/frame for matplotlib) and is difficult
-        to improve without changing the render engine.
+        Cold-run benchmarks on Linux (48-core, NVMe). Three codebases compared: the original lifeR (R), an
+        optimised lifeR build, and PyLifer (Python). At 3 km the optimised R build cuts peak RAM from 63.6 GB
+        to 6.6 GB; PyLifer runs in 2:43 at the cost of 24.4 GB. At every resolution PyLifer is fastest on wall
+        time while optimised lifeR uses the least memory. The accumulation bottleneck dominates R at higher
+        resolutions; PyLifer’s preprocessed &amp; cached stack keeps accumulation under 71 s even at 3 km.
       </p>
 
       <div class="pylifer-compare">
-        <p><strong>Computational stats</strong> &mdash; phase breakdown at 3 km (warm cache, 48-core, NVMe):</p>
+        <p><strong>Computational stats</strong> &mdash; cold runs, confirmed &times;2 (48-core, NVMe):</p>
         <table class="pylifer-compare-table">
           <thead>
             <tr>
-              <th scope="col">Phase</th>
-              <th scope="col">lifeR (R)</th>
-              <th scope="col">PyLifer (Py)</th>
-              <th scope="col">Ratio</th>
+              <th scope="col">Script / Res</th>
+              <th scope="col">Wall</th>
+              <th scope="col">Peak RSS</th>
+              <th scope="col">Preprocess</th>
+              <th scope="col">Accum</th>
+              <th scope="col">Render + GIF</th>
             </tr>
           </thead>
           <tbody>
+            <tr class="scale-b" style="font-style:italic;color:#555;">
+              <td colspan="6">Original lifeR (R)</td>
+            </tr>
+            <tr class="scale-b">
+              <td>27 km</td>
+              <td>1m 59s</td>
+              <td>8.1 GB</td>
+              <td>&mdash;</td>
+              <td>&mdash;</td>
+              <td>&mdash;</td>
+            </tr>
+            <tr class="scale-b">
+              <td>9 km</td>
+              <td>6m 28s</td>
+              <td>63.6 GB</td>
+              <td>&mdash;</td>
+              <td>&mdash;</td>
+              <td>&mdash;</td>
+            </tr>
+            <tr class="scale-a" style="font-style:italic;color:#555;">
+              <td colspan="6">Optimised lifeR (R)</td>
+            </tr>
             <tr class="scale-a">
-              <td>Accumulation</td>
+              <td>27 km</td>
+              <td>1m 23s</td>
+              <td>1.4 GB</td>
+              <td>(in accum)</td>
               <td>144.7 s</td>
-              <td>80.2 s</td>
-              <td>1.8&times;</td>
-            </tr>
-            <tr class="scale-b">
-              <td>Reprojection</td>
-              <td>53.5 s</td>
-              <td>1.1 s</td>
-              <td>49&times;</td>
+              <td>~18 s</td>
             </tr>
             <tr class="scale-a">
-              <td>Render</td>
-              <td>165.0 s</td>
-              <td>3.4 s</td>
-              <td>49&times;</td>
+              <td>9 km</td>
+              <td>5m 42s</td>
+              <td>1.6 GB</td>
+              <td>(in accum)</td>
+              <td>281.2 s</td>
+              <td>~38 s</td>
+            </tr>
+            <tr class="scale-a">
+              <td>3 km</td>
+              <td>40m 46s</td>
+              <td>6.6 GB</td>
+              <td>(in accum)</td>
+              <td>2206.1 s</td>
+              <td>~175 s</td>
+            </tr>
+            <tr class="scale-b" style="font-style:italic;color:#555;">
+              <td colspan="6">PyLifer (Python)</td>
             </tr>
             <tr class="scale-b">
-              <td>GIF assembly</td>
-              <td>6.1 s</td>
-              <td>4.1 s</td>
-              <td>1.5&times;</td>
+              <td>27 km</td>
+              <td>0m 15s</td>
+              <td>1.9 GB</td>
+              <td>7.3 s</td>
+              <td>0.3 s</td>
+              <td>~6 s</td>
             </tr>
-            <tr class="scale-a" style="font-weight:600;">
-              <td>Wall total</td>
-              <td>6:27</td>
-              <td>2:14</td>
-              <td>2.9&times;</td>
+            <tr class="scale-b">
+              <td>9 km</td>
+              <td>0m 26s</td>
+              <td>5.1 GB</td>
+              <td>14.3 s</td>
+              <td>4.6 s</td>
+              <td>~7 s</td>
             </tr>
-            <tr class="scale-b" style="font-weight:600;">
-              <td>Peak RSS</td>
-              <td>3.3 GB</td>
-              <td>25.4 GB</td>
-              <td>0.13&times; <em>(R wins)</em></td>
+            <tr class="scale-b">
+              <td>3 km</td>
+              <td>2m 43s</td>
+              <td>24.4 GB</td>
+              <td>83 s</td>
+              <td>70.7 s</td>
+              <td>~8 s</td>
             </tr>
           </tbody>
         </table>
