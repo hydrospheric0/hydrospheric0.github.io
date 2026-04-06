@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PyLifer: Mapping my lifers with Python — Hydro-spatial mapping and more</title>
+  <title>PyLifer: Mapping my life birds with Python — Hydro-spatial mapping and more</title>
   <meta name="description" content="PyLifer is a Python port of lifeR that generates 3 km low-resolution lifer animations from eBird Status &amp; Trends data." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://hydrospheric0.github.io/posts/post-pylifer.html" />
-  <meta property="og:title" content="PyLifer: Mapping my lifers with Python — Hydro-spatial mapping and more" />
+  <meta property="og:title" content="PyLifer: Mapping my life birds with Python — Hydro-spatial mapping and more" />
   <meta property="og:description" content="PyLifer is a Python port of lifeR that generates 3 km low-resolution lifer animations from eBird Status &amp; Trends data." />
   <meta property="og:url" content="https://hydrospheric0.github.io/posts/post-pylifer.html" />
   <meta property="og:type" content="article" />
@@ -139,6 +139,12 @@
       color: #333;
     }
 
+    /* top group headers */
+    .pylifer-compare-table th.col-grp-orig { background: #4a5568; color: #fff; text-align: center; }
+    .pylifer-compare-table th.col-grp-opt  { background: #0b2e6b; color: #fff; text-align: center; }
+    .pylifer-compare-table th.col-grp-py   { background: #1a5c2a; color: #fff; text-align: center; }
+
+    /* sub-headers and data cells */
     .pylifer-compare-table th.col-sub-orig,
     .pylifer-compare-table td.col-orig { background: #f4f6fb; color: #222; }
 
@@ -210,7 +216,7 @@
         <div class="post-reading-col">
 <div class="post-container">
 <article class="post-article post-single" id="post-pylifer">
-      <h3>PyLifer: Mapping my lifers with Python</h3>
+      <h3>PyLifer: Mapping my life birds with Python</h3>
       <div class="post-article-meta">
         <span class="post-article-date">Published: March 25, 2026</span>
       </div>
@@ -309,9 +315,9 @@
           <thead>
             <tr>
               <th scope="col" rowspan="2" class="col-topleft"></th>
-              <th scope="colgroup" colspan="3" style="text-align:center;">Original lifeR (R)</th>
-              <th scope="colgroup" colspan="3" style="text-align:center;">Optimised lifeR (R)</th>
-              <th scope="colgroup" colspan="3" style="text-align:center;">PyLifer (Python)</th>
+              <th scope="colgroup" colspan="3" class="col-grp-orig">Original lifeR (R)</th>
+              <th scope="colgroup" colspan="3" class="col-grp-opt">Optimised lifeR (R)</th>
+              <th scope="colgroup" colspan="3" class="col-grp-py">PyLifer (Python)</th>
             </tr>
             <tr>
               <th scope="col" class="col-sub-orig">27 km</th>
