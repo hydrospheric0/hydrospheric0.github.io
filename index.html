@@ -88,17 +88,29 @@
         </p>
         </div>
 
-        <div class="project-card" style="padding:0;overflow:hidden">
-          <div id="about-map" style="width:100%;height:280px"></div>
+        <div class="project-card about-map-card">
+          <div id="about-map"></div>
+          <div class="map-legend" aria-label="Map legend">
+            <span class="map-legend__item">
+              <span class="map-legend__dot map-legend__dot--project" aria-hidden="true"></span>
+              <span>Projects</span>
+            </span>
+            <span class="map-legend__item">
+              <span class="map-legend__dot map-legend__dot--experience" aria-hidden="true"></span>
+              <span>Lived / extensive work experience</span>
+            </span>
+          </div>
         </div>
         <script>
         (function(){
           var map=L.map('about-map',{scrollWheelZoom:false}).setView([20,0],2);
+          var experienceColor='#4a9eff';
+          var projectColor='#6bcb77';
           L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
             attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
             subdomains:'abcd',maxZoom:19
           }).addTo(map);
-          var locs=[
+          var experienceLocs=[
             [52.3676,4.9041,'Amsterdam, Netherlands'],
             [50.7339,7.0982,'Bonn, Germany'],
             [-1.4558,-48.5024,'Bel\u00e9m, Brazil'],
@@ -114,7 +126,7 @@
             [34.7584,-96.6778,'Chickasaw, Oklahoma'],
             [42.8544,-5.6167,'La Pola de Gord\u00f3n, Spain']
           ];
-          var locsLight=[
+          var projectLocs=[
             [41.3275,19.8187,'Tirana, Albania'],
             [4.7110,-74.0721,'Bogot\u00e1, Colombia'],
             [-15.7975,-47.8919,'Bras\u00edlia, Brazil'],
@@ -134,13 +146,13 @@
             [21.8500,-105.4500,'Marismas Nacionales, Mexico'],
             [18.7667,-95.7667,'Laguna Alvarado, Mexico']
           ];
-          locs.forEach(function(l){
-            L.circleMarker([l[0],l[1]],{radius:5,color:'#4a9eff',fillColor:'#4a9eff',fillOpacity:0.85,weight:1.5})
+          experienceLocs.forEach(function(l){
+            L.circleMarker([l[0],l[1]],{radius:5,color:experienceColor,fillColor:experienceColor,fillOpacity:0.85,weight:1.5})
               .bindTooltip(l[2],{direction:'top',offset:[0,-6]})
               .addTo(map);
           });
-          locsLight.forEach(function(l){
-            L.circleMarker([l[0],l[1]],{radius:5,color:'#6bcb77',fillColor:'#6bcb77',fillOpacity:0.7,weight:1.5})
+          projectLocs.forEach(function(l){
+            L.circleMarker([l[0],l[1]],{radius:5,color:projectColor,fillColor:projectColor,fillOpacity:0.7,weight:1.5})
               .bindTooltip(l[2],{direction:'top',offset:[0,-6]})
               .addTo(map);
           });
