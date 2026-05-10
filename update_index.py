@@ -1,6 +1,6 @@
 import re
 
-with open("index.html", "r") as f:
+with open("about.html", "r") as f:
     content = f.read()
 
 old_str = """        <div class="project-card position-card">
@@ -27,7 +27,7 @@ new_str = """        <div class="project-card position-card">
         </div>"""
 
 if old_str in content:
-    with open("index.html", "w") as f:
+    with open("about.html", "w") as f:
         f.write(content.replace(old_str, new_str))
         print("Success")
 else:
