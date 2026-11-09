@@ -72,8 +72,8 @@ const CODING_PROJECTS = [
     thumb: 'images/atlas_small.png',
     thumbAlt: 'CA Bird Atlas app',
     postHref: 'posts/post-calbirds-atlas.html',
-    sourceHref: 'https://github.com/hydrospheric0/calbirds-atlas',
-    webappHref: 'https://calbirds-atlas.pages.dev/',
+    sourceHref: 'https://github.com/calbirds/calbirds-atlas',
+    webappHref: 'https://atlas.calbirds.org/',
     description: 'Lightweight mobile-first Leaflet app that locates your position on the CA Breeding Bird Atlas block grid and color-codes blocks by survey coverage. Built with vanilla JS, Cloudflare Pages, and the eBird API.'
   },
   {
@@ -94,7 +94,6 @@ const CODING_PROJECTS = [
     thumb: 'images/twitcher-thumbnail.png',
     thumbAlt: 'Twitcher screenshot',
     postHref: 'posts/post-twitcher.html',
-    sourceHref: 'https://github.com/hydrospheric0/twitcher',
     webappHref: 'https://twitcher.io',
     description: 'Lightweight mobile-first Leaflet app that helps "twitchers"\u2014extreme bird chasers\u2014find rarities based on eBird reports across the entire continental US. Applies ABA rarity codes for filtering. Built with vanilla JS, Cloudflare Pages, and the eBird API.'
   },
@@ -105,8 +104,8 @@ const CODING_PROJECTS = [
     thumb: 'images/cbc-compiler-thumbnail.png',
     thumbAlt: 'cbc-compiler screenshot',
     postHref: 'posts/post-cbc-compiler.html',
-    sourceHref: 'https://github.com/hydrospheric0/cbc-compiler',
-    webappHref: 'https://hydrospheric0.github.io/cbc-compiler/',
+    sourceHref: 'https://github.com/calbirds/cbc-compiler',
+    webappHref: 'https://cbc-compiler.calbirds.org/',
     description: 'Automation scripts for compiling Audubon Christmas Bird Count data \u2014 merging field sheets, computing sector summaries, and generating formatted reports for submission.'
   },
   {
@@ -116,8 +115,8 @@ const CODING_PROJECTS = [
     thumb: 'images/cbc-capcplot-thumb.png',
     thumbAlt: 'CBC CAPC plot example',
     postHref: 'posts/post-cbc-capcplot.html',
-    sourceHref: 'https://github.com/hydrospheric0/cbc-capcplot',
-    webappHref: 'https://hydrospheric0.github.io/cbc-capcplot/',
+    sourceHref: 'https://github.com/calbirds/cbc-capcplot',
+    webappHref: 'https://cbc-capcplot.calbirds.org/',
     description: 'Visualization tool for Christmas Bird Count data.'
   },
   {
@@ -127,8 +126,8 @@ const CODING_PROJECTS = [
     thumb: 'images/cbc-historic-thumb.png',
     thumbAlt: 'CBC historic data tool',
     postHref: 'posts/post-cbc-historic.html',
-    sourceHref: 'https://github.com/hydrospheric0/cbc-historic',
-    webappHref: 'https://hydrospheric0.github.io/cbc-historic/',
+    sourceHref: 'https://github.com/calbirds/cbc-historic',
+    webappHref: 'https://cbc-historic.calbirds.org/',
     description: 'Tool for improving access to historical Christmas Bird Count data.'
   },
   {
@@ -137,8 +136,8 @@ const CODING_PROJECTS = [
     type: 'mine',
     thumb: null,
     postHref: null,
-    sourceHref: 'https://github.com/hydrospheric0/cbc-weather',
-    webappHref: 'https://hydrospheric0.github.io/cbc-weather/',
+    sourceHref: 'https://github.com/calbirds/cbc-weather',
+    webappHref: 'https://cbc-weather.calbirds.org/',
     description: 'CBC weather mapping tool \u2014 visualizes weather conditions recorded during Audubon Christmas Bird Counts.'
   },
   {
@@ -186,7 +185,7 @@ function buildProjectCardHTML(proj) {
       ? `<a href="${proj.postHref}" class="project-post-link">${proj.name}</a>`
       : proj.name);
   const linkTags = [
-    `<a href="${proj.sourceHref}" target="_blank" rel="noopener noreferrer" class="tag tag-source">Source</a>`,
+    proj.sourceHref ? `<a href="${proj.sourceHref}" target="_blank" rel="noopener noreferrer" class="tag tag-source">Source</a>` : '',
     proj.webappHref ? `<a href="${proj.webappHref}" target="_blank" rel="noopener noreferrer" class="tag tag-webapp">Web app</a>` : '',
     proj.postHref  ? `<a href="${proj.postHref}" class="tag tag-post">Post</a>` : ''
   ].filter(Boolean).join('\n                  ');
