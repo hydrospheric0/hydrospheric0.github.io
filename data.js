@@ -63,7 +63,7 @@ const CODING_PROJECTS = [
     postHref: 'posts/post-pylifer.html',
     sourceHref: 'https://github.com/hydrospheric0/PyLifer',
     webappHref: null,
-    description: 'Python implementation of lifeR that generates animated personal lifer maps from eBird Status &amp; Trends occurrence data.'
+    description: 'Python successor to my lifeR fork and a significant upgrade over it: generates animated personal lifer maps from eBird Status &amp; Trends occurrence data.'
   },
   {
     name: 'california-bird-atlas',
@@ -85,7 +85,7 @@ const CODING_PROJECTS = [
     postHref: 'posts/post-lifer.html',
     sourceHref: 'https://github.com/hydrospheric0/lifeR',
     webappHref: null,
-    description: 'Create animated maps of missing lifer birds using eBird Status &amp; Trends occurrence data. Fork of <a href="https://github.com/smsfrn/lifeR" target="_blank" rel="noopener noreferrer">lifeR</a> by Samuel Safran.'
+    description: 'Create animated maps of missing lifer birds using eBird Status &amp; Trends occurrence data. Fork of <a href="https://github.com/smsfrn/lifeR" target="_blank" rel="noopener noreferrer">lifeR</a> by Samuel Safran. Succeeded by <a href="posts/post-pylifer.html">PyLifer</a>.'
   },
   {
     name: 'twitcher',
