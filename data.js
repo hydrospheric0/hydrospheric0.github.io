@@ -6,7 +6,7 @@ const PROJECTS = [
     title: 'CalBirds',
     href: 'https://calbirds.org/',
     thumb: 'images/calbirds-thumb.jpg',
-    text: 'Free tools for birders: plan your Christmas Bird Count, chase rarities, find hotspots on a road trip and explore your life list. With a write-up for every tool.'
+    text: 'Free tools for birders: plan your Christmas Bird Count, chase rarities, support the California Bird Atlas and explore your life list. With the code and a write-up for every tool.'
   }
 ];
 
