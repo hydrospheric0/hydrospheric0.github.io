@@ -1,61 +1,12 @@
 'use strict';
 
-/* ── Posts (newest-first) ──────────────────────────────────────── */
-const POSTS = [
+/* ── Projects (tiles on the home page) ──────────────────────── */
+const PROJECTS = [
   {
-    title: 'When is each Christmas Bird Count?',
-    date: 'November 21, 2026',
-    href: 'posts/post-cbc-count-dates.html',
-    thumb: 'images/cbc-count-dates-thumb.png',
-    excerpt: 'A map of every Audubon Christmas Bird Count circle, colored by its count date, so you can see at a glance which counts fall on which day.'
-  },
-  {
-    title: 'PyLifer: Mapping my life birds with Python',
-    date: 'March 25, 2026',
-    href: 'posts/post-pylifer.html',
-    thumb: 'images/pylifer-thumbnail.jpg',
-    excerpt: 'A Python port of lifeR with 3 km low-resolution animations showing potential lifers across the US and a regional view.'
-  },
-  {
-    title: 'Supporting the California Bird Atlas',
-    date: 'March 22, 2026',
-    href: 'posts/post-calbirds-atlas.html',
-    thumb: 'images/atlas_small.png',
-    excerpt: 'A small mobile web-app that shows your location relative to the California Breeding Bird Atlas grid and provides block coverage statistics.'
-  },
-  {
-    title: 'Mapping my \u201cLifer\u201d Bird List with lifeR',
-    date: 'March 21, 2026',
-    href: 'posts/post-lifer.html',
-    thumb: 'images/lifer-thumbnail.jpg',
-    excerpt: 'Using eBird Status &amp; Trends occurrence data to generate animated weekly maps of potential life-list birds across the US.'
-  },
-  {
-    title: 'Twitcher',
-    date: 'March 14, 2026',
-    href: 'posts/post-twitcher.html',
-    thumb: 'images/twitcher-thumbnail.png',
-    excerpt: 'A mobile-first rarity finder that scans eBird reports across the continental US and filters by ABA rarity codes to help twitchers track down the most unusual birds.'
-  },
-  {
-    title: 'cbc-compiler',
-    date: 'March 10, 2026',
-    href: 'posts/post-cbc-compiler.html',
-    thumb: 'images/cbc-compiler-thumbnail.png',
-    excerpt: 'Automation scripts for compiling Audubon Christmas Bird Count data — merging field sheets, computing sector summaries, and generating formatted reports for submission.'  },
-  {
-    title: 'CBC CAPC plot',
-    date: 'March 1, 2026',
-    href: 'posts/post-cbc-capcplot.html',
-    thumb: 'images/cbc-capcplot-thumb.png',
-    excerpt: 'Interactive visualization tool for exploring long-term Christmas Bird Count species trends with trendline analysis and statistical summaries.'
-  },
-  {
-    title: 'CBC historic',
-    date: 'February 24, 2026',
-    href: 'posts/post-cbc-historic.html',
-    thumb: 'images/cbc-historic-thumb.png',
-    excerpt: 'Tool for improving access to historical Christmas Bird Count data — browse, search, and explore decades of CBC circle results.'
+    title: 'CalBirds',
+    href: 'https://calbirds.org/',
+    thumb: 'images/calbirds-thumb.jpg',
+    text: 'Free tools for birders: plan your Christmas Bird Count, chase rarities, find hotspots on a road trip and explore your life list. With a write-up for every tool.'
   }
 ];
 
@@ -67,8 +18,8 @@ const CODING_PROJECTS = [
     type: 'mine',
     thumb: 'images/cbc-count-dates-thumb.png',
     thumbAlt: 'Map of Christmas Bird Count circles colored by count date',
-    postHref: 'posts/post-cbc-count-dates.html',
-    webappHref: 'https://hydrospheric0.github.io/maps/cbc-count-dates/',
+    postHref: 'https://calbirds.org/posts/post-cbc-count-dates',
+    webappHref: 'https://cbc-dates.calbirds.org/',
     description: 'Map of every Audubon Christmas Bird Count circle, colored by its count date.'
   },
   {
@@ -77,7 +28,7 @@ const CODING_PROJECTS = [
     type: 'mine',
     thumb: 'images/pylifer-thumbnail.jpg',
     thumbAlt: 'PyLifer 3 km map thumbnail',
-    postHref: 'posts/post-pylifer.html',
+    postHref: 'https://calbirds.org/posts/post-pylifer',
     sourceHref: 'https://github.com/hydrospheric0/PyLifer',
     webappHref: null,
     description: 'Python successor to my lifeR fork and a significant upgrade over it: generates animated personal lifer maps from eBird Status &amp; Trends occurrence data.'
@@ -88,7 +39,7 @@ const CODING_PROJECTS = [
     type: 'mine',
     thumb: 'images/atlas_small.png',
     thumbAlt: 'CA Bird Atlas app',
-    postHref: 'posts/post-calbirds-atlas.html',
+    postHref: 'https://calbirds.org/posts/post-calbirds-atlas',
     sourceHref: 'https://github.com/calbirds/calbirds-atlas',
     webappHref: 'https://atlas.calbirds.org/',
     description: 'Lightweight mobile-first Leaflet app that locates your position on the CA Breeding Bird Atlas block grid and color-codes blocks by survey coverage. Built with vanilla JS, Cloudflare Pages, and the eBird API.'
@@ -99,7 +50,7 @@ const CODING_PROJECTS = [
     type: 'fork',
     thumb: 'images/lifer-thumbnail.jpg',
     thumbAlt: 'lifeR animated map',
-    postHref: 'posts/post-lifer.html',
+    postHref: 'https://calbirds.org/posts/post-lifer',
     sourceHref: 'https://github.com/hydrospheric0/lifeR',
     webappHref: null,
     description: 'Create animated maps of missing lifer birds using eBird Status &amp; Trends occurrence data. Fork of <a href="https://github.com/smsfrn/lifeR" target="_blank" rel="noopener noreferrer">lifeR</a> by Samuel Safran. Succeeded by <a href="posts/post-pylifer.html">PyLifer</a>.'
@@ -110,7 +61,7 @@ const CODING_PROJECTS = [
     type: 'mine',
     thumb: 'images/twitcher-thumbnail.png',
     thumbAlt: 'Twitcher screenshot',
-    postHref: 'posts/post-twitcher.html',
+    postHref: 'https://calbirds.org/posts/post-twitcher',
     webappHref: 'https://twitcher.io',
     description: 'Lightweight mobile-first Leaflet app that helps "twitchers"\u2014extreme bird chasers\u2014find rarities based on eBird reports across the entire continental US. Applies ABA rarity codes for filtering. Built with vanilla JS, Cloudflare Pages, and the eBird API.'
   },
@@ -120,7 +71,7 @@ const CODING_PROJECTS = [
     type: 'mine',
     thumb: 'images/cbc-compiler-thumbnail.png',
     thumbAlt: 'cbc-compiler screenshot',
-    postHref: 'posts/post-cbc-compiler.html',
+    postHref: 'https://calbirds.org/posts/post-cbc-compiler',
     sourceHref: 'https://github.com/calbirds/cbc-compiler',
     webappHref: 'https://cbc-compiler.calbirds.org/',
     description: 'Automation scripts for compiling Audubon Christmas Bird Count data \u2014 merging field sheets, computing sector summaries, and generating formatted reports for submission.'
@@ -131,7 +82,7 @@ const CODING_PROJECTS = [
     type: 'mine',
     thumb: 'images/cbc-capcplot-thumb.png',
     thumbAlt: 'CBC CAPC plot example',
-    postHref: 'posts/post-cbc-capcplot.html',
+    postHref: 'https://calbirds.org/posts/post-cbc-capcplot',
     sourceHref: 'https://github.com/calbirds/cbc-capcplot',
     webappHref: 'https://cbc-capcplot.calbirds.org/',
     description: 'Visualization tool for Christmas Bird Count data.'
@@ -142,7 +93,7 @@ const CODING_PROJECTS = [
     type: 'mine',
     thumb: 'images/cbc-historic-thumb.png',
     thumbAlt: 'CBC historic data tool',
-    postHref: 'posts/post-cbc-historic.html',
+    postHref: 'https://calbirds.org/posts/post-cbc-historic',
     sourceHref: 'https://github.com/calbirds/cbc-historic',
     webappHref: 'https://cbc-historic.calbirds.org/',
     description: 'Tool for improving access to historical Christmas Bird Count data.'
@@ -152,7 +103,7 @@ const CODING_PROJECTS = [
     tags: ['My code', 'JavaScript', 'CBC', 'weather', 'Birds'],
     type: 'mine',
     thumb: null,
-    postHref: null,
+    postHref: 'https://calbirds.org/posts/post-cbc-weather',
     sourceHref: 'https://github.com/calbirds/cbc-weather',
     webappHref: 'https://cbc-weather.calbirds.org/',
     description: 'CBC weather mapping tool \u2014 visualizes weather conditions recorded during Audubon Christmas Bird Counts.'
@@ -162,7 +113,7 @@ const CODING_PROJECTS = [
     tags: ['My code', 'JavaScript', 'eBird', 'Birds'],
     type: 'mine',
     thumb: null,
-    postHref: null,
+    postHref: 'https://calbirds.org/posts/post-ebird-tripreport-csv',
     sourceHref: 'https://github.com/hydrospheric0/ebird-tripreport-csv',
     webappHref: null,
     description: 'Browser extension for downloading your trip report as a CSV. Works best with Firefox but a preliminary Chrome extension is also provided.'
@@ -253,6 +204,15 @@ function buildPostCardHTML(post) {
             </div>
           </div>
         </article>`;
+}
+
+function renderProjectTiles(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = PROJECTS.map(p => `<a class="proj-tile" href="${p.href}">
+      <img src="${p.thumb}" alt="" />
+      <span class="proj-tile-body"><span class="proj-tile-title">${p.title} &rarr;</span>
+      <span class="proj-tile-text">${p.text}</span></span></a>`).join('');
 }
 
 function renderPostCards(containerId) {

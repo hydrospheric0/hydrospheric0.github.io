@@ -22,7 +22,7 @@
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="topbar">
     <nav class="topnav">
-      <a href="index.html" class="nav-link">Posts</a>
+      <a href="index.html" class="nav-link">Projects</a>
       <a href="coding.html" class="nav-link">Bird Code</a>
       <!-- <a href="projects.html" class="nav-link">Projects</a> -->
       <a href="publications.html" class="nav-link">Publications</a>
@@ -443,8 +443,8 @@
       </section>
 
       <section id="posts" class="tab-panel">
-        <h2>Posts</h2>
-        <div id="indexPostCards"></div>
+        <h2>Projects</h2>
+        <div id="indexPostCards" class="proj-grid"></div>
       </section>
 
     </main>
@@ -464,6 +464,5 @@
       });
     });
 
-    // ── Posts pager ───────────────────────────────────────────────
-    renderPostCards('indexPostCards');
+    renderProjectTiles('indexPostCards');
   </script>

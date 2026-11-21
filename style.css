@@ -1125,3 +1125,12 @@ img { max-width: 100%; }
 .embed-map iframe { display: block; width: 100%; height: 100%; border: 0; }
 .embed-caption { font-size: 0.9rem; color: var(--muted); margin-top: 0.4rem; }
 @media (max-width: 700px) { .embed-map { height: 520px; } }
+
+/* ── Projects tiles ───────────────────────────────────────────── */
+.proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+.proj-tile { display: flex; flex-direction: column; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; text-decoration: none; color: var(--text); transition: box-shadow .15s, border-color .15s; }
+.proj-tile:hover { border-color: var(--accent); box-shadow: 0 4px 14px rgba(0,0,0,.08); }
+.proj-tile img { display: block; width: 100%; aspect-ratio: 13 / 9; object-fit: cover; object-position: top; border-bottom: 1px solid var(--border); }
+.proj-tile-body { display: flex; flex-direction: column; gap: .35rem; padding: .9rem 1rem 1rem; }
+.proj-tile-title { font-weight: 700; font-size: 1.1rem; }
+.proj-tile-text { color: var(--muted); font-size: .9rem; line-height: 1.5; }
