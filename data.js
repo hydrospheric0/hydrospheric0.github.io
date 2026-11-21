@@ -3,6 +3,13 @@
 /* ── Posts (newest-first) ──────────────────────────────────────── */
 const POSTS = [
   {
+    title: 'When is each Christmas Bird Count?',
+    date: 'November 21, 2026',
+    href: 'posts/post-cbc-count-dates.html',
+    thumb: 'images/cbc-count-dates-thumb.png',
+    excerpt: 'A map of every Audubon Christmas Bird Count circle, colored by its count date, so you can see at a glance which counts fall on which day.'
+  },
+  {
     title: 'PyLifer: Mapping my life birds with Python',
     date: 'March 25, 2026',
     href: 'posts/post-pylifer.html',
@@ -54,6 +61,16 @@ const POSTS = [
 
 /* ── Coding projects ──────────────────────────────────────────── */
 const CODING_PROJECTS = [
+  {
+    name: 'CBC count dates',
+    tags: ['My code', 'JavaScript', 'CBC', 'mapping', 'Birds'],
+    type: 'mine',
+    thumb: 'images/cbc-count-dates-thumb.png',
+    thumbAlt: 'Map of Christmas Bird Count circles colored by count date',
+    postHref: 'posts/post-cbc-count-dates.html',
+    webappHref: 'https://hydrospheric0.github.io/maps/cbc-count-dates/',
+    description: 'Map of every Audubon Christmas Bird Count circle, colored by its count date.'
+  },
   {
     name: 'PyLifer: Mapping my life birds with Python',
     tags: ['My code', 'Python', 'eBird', 'mapping', 'Birds'],
